@@ -81,6 +81,6 @@ const WEEKS = [
       "Design-system audit follow-ups from the token reconciliation."
     ],
     slack:
-      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / content / product-strategy work that usually happens in the background.\n\n*This week (Week 1):*\n🎨 *Brand* — consolidating our design tokens into one system + shipped the component library\n✍️ *Content* — CS asset suite for Blake (4 audience cuts + guided demo) & landing page updates\n🧭 *Product* — expanded the value-prop canvas to 4 buyer profiles\n🚢 *Shipping* — snapshot renewals (demo + prod) now live\n\nFull dashboard 👉 [PASTE LINK]\nI'll drop one of these every Monday. 🙌"
+      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / content / product-strategy work that usually happens in the background.\n\n*This week (Week 1):*\n🎨 *Brand* — consolidating our design tokens into one system + shipped the component library\n✍️ *Content* — CS asset suite for Blake (4 audience cuts + guided demo) & landing page updates\n🧭 *Product* — expanded the value-prop canvas to 4 buyer profiles\n🚢 *Shipping* — snapshot renewals (demo + prod) now live\n\nFull dashboard 👉 https://blackandrainbow.github.io/lauren-weekly/\nI'll drop one of these every Monday. 🙌"
   }
 ];

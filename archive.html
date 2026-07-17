@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archive · Relativity6</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">R6</div>
+      <div class="brand-text">
+        <span class="brand-title">Lauren's Week</span>
+        <span class="brand-sub">Relativity6 · what I'm working on</span>
+      </div>
+    </div>
+    <div class="topbar-spacer"></div>
+    <nav class="nav-links">
+      <a href="index.html">This week</a>
+      <a href="archive.html" class="active">Archive</a>
+    </nav>
+  </header>
+
+  <main class="wrap archive-layout">
+    <aside>
+      <div class="archive-head">
+        <h1>Archive</h1>
+        <p>Every week, numbered.</p>
+      </div>
+      <nav class="week-nav" id="week-nav"><!-- rendered by archive.js --></nav>
+    </aside>
+    <div>
+      <div class="report" id="report"><!-- rendered by archive.js --></div>
+      <p class="foot"><a href="index.html">← Back to this week</a></p>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/archive.js"></script>
+</body>
+</html>

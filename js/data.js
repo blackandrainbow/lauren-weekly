@@ -12,11 +12,11 @@
 const WEEKS = [
   {
     number: 1,
-    weekOf: "2026-07-20",
-    dateRange: "Jul 20 – 24, 2026",
-    headline: "Turning the background strategy work into shared, visible assets.",
+    weekOf: "2026-07-13",
+    dateRange: "Jul 13 – 17, 2026",
+    headline: "Making the background work visible — starting with this.",
     tldr:
-      "Kicking off weekly visibility into the brand, content, and product-strategy work that usually happens off-screen. This week is about consolidating foundations so everything we ship looks and sounds like one Relativity6.",
+      "A foundations week. Shipped this very dashboard so the team can finally see the brand, content, and product-strategy work that usually happens off-screen — and kept consolidating the design system underneath everything we ship.",
     lanes: [
       {
         name: "Brand & Design System",
@@ -71,16 +71,16 @@ const WEEKS = [
       }
     ],
     shipped: [
+      { title: "This weekly-update dashboard", note: "Live on GitHub Pages — a standing window into what I'm working on, updated every Monday." },
       { title: "Component library + Storybook clone", note: "Live Controls, Canvas / Code views, canonical tokens." },
-      { title: "Design-system handoff (HANDOFF.md)", note: "Entry point packaged for James." },
-      { title: "Snapshot renewals", note: "Demo + production both live." }
+      { title: "Design-system handoff (HANDOFF.md)", note: "Entry point packaged for James." }
     ],
     onDeck: [
+      "Post Week 1 to the team channel and get a feel for the cadence.",
       "Sync with James on the red track (mocks, Tupelo shots, Core+ one-pager).",
-      "Fold the 4 buyer profiles into the landing narrative.",
-      "Design-system audit follow-ups from the token reconciliation."
+      "Fold the 4 buyer profiles into the landing narrative."
     ],
     slack:
-      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / content / product-strategy work that usually happens in the background.\n\n*This week (Week 1):*\n🎨 *Brand* — consolidating our design tokens into one system + shipped the component library\n✍️ *Content* — CS asset suite for Blake (4 audience cuts + guided demo) & landing page updates\n🧭 *Product* — expanded the value-prop canvas to 4 buyer profiles\n🚢 *Shipping* — snapshot renewals (demo + prod) now live\n\nFull dashboard 👉 https://blackandrainbow.github.io/lauren-weekly/\nI'll drop one of these every Monday. 🙌"
+      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / content / product-strategy work that usually happens in the background.\n\nKicking it off by shipping the thing itself: a little dashboard you can check anytime.\n\n*This week (Week 1):*\n🎨 *Brand* — consolidating our design tokens into one system + component library\n✍️ *Content* — CS asset suite for Blake (4 audience cuts + guided demo)\n🧭 *Product* — expanded the value-prop canvas to 4 buyer profiles\n🚀 *New* — built this weekly dashboard so you can follow along\n\nCheck it out 👉 https://blackandrainbow.github.io/lauren-weekly/\nI'll drop a fresh one every Monday. 🙌"
   }
 ];

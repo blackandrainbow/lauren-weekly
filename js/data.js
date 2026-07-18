@@ -11,6 +11,62 @@
 
 const WEEKS = [
   {
+    number: 2,
+    weekOf: "2026-07-20",
+    dateRange: "Jul 20 – 24, 2026",
+    headline: "Turning launch strategy into shipped systems.",
+    tldr:
+      "Coming out of Monday's messaging session with Alan and Jon, this week is about locking the launch narrative and getting the systems around it production-ready — the tour, the PDF export, the design system, and the product-strategy dashboard.",
+    lanes: [
+      {
+        name: "Messaging & Launch Strategy",
+        emoji: "🎯",
+        status: "In progress",
+        statusType: "active",
+        summary: "Locking how we talk about Marvin at launch.",
+        items: [
+          "Turning Monday's messaging-strategy session with Alan and Jon into a clear, shared launch narrative.",
+          "Aligning the segment-pitch framework with the final messaging."
+        ]
+      },
+      {
+        name: "Snapshot & Workbench",
+        emoji: "🛠️",
+        status: "In progress",
+        statusType: "active",
+        summary: "Bringing the surrounding experience up to match last week's product ships.",
+        items: [
+          "Updating the product tour to reflect the new search, Core+ chips, Marvin's Analysis, and monitoring.",
+          "Updating the PDF export."
+        ]
+      },
+      {
+        name: "Brand & Design System",
+        emoji: "🎨",
+        status: "In progress",
+        statusType: "active",
+        summary: "Making the design system official.",
+        items: [
+          "Formally establishing the design system so everything we build draws from one source."
+        ]
+      },
+      {
+        name: "Product Vision & Strategy",
+        emoji: "🧭",
+        status: "In progress",
+        statusType: "active",
+        summary: "Getting the strategy work in front of the team.",
+        items: [
+          "Getting the product-strategy dashboard live."
+        ]
+      }
+    ],
+    shipped: [],
+    onDeck: [],
+    slack:
+      "👋 *Week 2* — here's where my focus is this week:\n\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🎨 *Design system* — making it official, one source for everything we build\n🧭 *Strategy* — getting the product-strategy dashboard live\n\nDashboard 👉 https://blackandrainbow.github.io/lauren-weekly/\nMore as it ships this week. 🙌"
+  },
+  {
     number: 1,
     weekOf: "2026-07-13",
     dateRange: "Jul 13 – 17, 2026",

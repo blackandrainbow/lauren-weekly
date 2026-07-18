@@ -64,7 +64,7 @@ const WEEKS = [
     shipped: [],
     onDeck: [],
     slack:
-      "👋 *Week 2* — here's where my focus is this week:\n\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🎨 *Design system* — making it official, one source for everything we build\n🧭 *Strategy* — getting the product-strategy dashboard live\n\nDashboard 👉 https://blackandrainbow.github.io/lauren-weekly/\nMore as it ships this week. 🙌"
+      "👋 *Week 2* — here's where my focus is this week:\n\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🎨 *Design system* — making it official, one source for everything we build\n🧭 *Strategy* — getting the product-strategy dashboard live\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* strategy docs are attached as a zip — open index.html and poke around when you have time.\n\nMore as it ships this week. 🙌"
   },
   {
     number: 1,
@@ -137,6 +137,6 @@ const WEEKS = [
       "Get the product-strategy dashboard live."
     ],
     slack:
-      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the strategy / product / brand work that usually happens in the background.\n\nIt was a big pre-launch week:\n\n🧭 *Strategy* — refreshed the value-prop + business-value canvases, built out client segmentation, and started a metrics/tracking plan for launch\n🛠️ *Product* — shipped a bunch to the snapshot & workbench: new search, premium Core+ chips, new Marvin's Analysis, and dual-scenario monitoring\n🎬 *Launch* — new Marvin Minute ready for Monday + prepping our messaging strategy (w/ Alan & Jon)\n🚀 *New* — built this dashboard so you can follow along\n\nCheck it out 👉 https://blackandrainbow.github.io/lauren-weekly/\nI'll drop a fresh one every Monday. 🙌"
+      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the strategy / product / brand work that usually happens in the background.\n\nIt was a big pre-launch week:\n\n🧭 *Strategy* — refreshed the value-prop + business-value canvases, built out client segmentation, and started a metrics/tracking plan for launch\n🛠️ *Product* — shipped a bunch to the snapshot & workbench: new search, premium Core+ chips, new Marvin's Analysis, and dual-scenario monitoring\n🎬 *Launch* — new Marvin Minute ready for Monday + prepping our messaging strategy (w/ Alan & Jon)\n🚀 *New* — built this dashboard so you can follow along\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip with the full strategy docs — open index.html and explore whenever you have time.\n\nFresh update every Monday. 🙌"
   }
 ];

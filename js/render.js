@@ -103,7 +103,9 @@ function initReportInteractions() {
     }
     const toggle = e.target.closest(".js-toggle-slack");
     if (toggle) {
-      const pre = document.querySelector(".js-slack-preview");
+      // Scope to this week's report so multiple reports on a page don't collide.
+      const scope = toggle.closest(".report") || document;
+      const pre = scope.querySelector(".js-slack-preview");
       if (pre) pre.hidden = !pre.hidden;
       toggle.textContent = pre && !pre.hidden ? "Hide text" : "Preview text";
     }

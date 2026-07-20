@@ -16,7 +16,7 @@ const WEEKS = [
     dateRange: "Jul 20 – 24, 2026",
     headline: "Turning launch strategy into shipped systems.",
     tldr:
-      "Coming out of Monday's messaging session with Alan and Jon, this week is about locking the launch narrative and getting the systems around it production-ready — the tour, the PDF export, the design system, and the product-strategy dashboard.",
+      "The Marvin Minute launch edition goes out this week. Coming out of Monday's messaging session with Alan and Jon, the rest of the week is about locking the launch narrative and getting the systems around it production-ready — the tour, the PDF export, the design system, and the product-strategy dashboard.",
     lanes: [
       {
         name: "Messaging & Launch Strategy",
@@ -25,8 +25,9 @@ const WEEKS = [
         statusType: "active",
         summary: "Locking how we talk about Marvin at launch.",
         items: [
+          "Marvin Minute — launch edition going out this week.",
           "Turning Monday's messaging-strategy session with Alan and Jon into a clear, shared launch narrative.",
-          "Aligning the segment-pitch framework with the final messaging."
+          "Aligning the segment pitch playbook with the final messaging."
         ]
       },
       {
@@ -64,7 +65,7 @@ const WEEKS = [
     shipped: [],
     onDeck: [],
     slack:
-      "👋 *Week 2* — here's where my focus is this week:\n\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🎨 *Design system* — making it official, one source for everything we build\n🧭 *Strategy* — getting the product-strategy dashboard live\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* strategy docs are attached as a zip — open index.html and poke around when you have time.\n\nMore as it ships this week. 🙌"
+      "👋 *Week 2* — here's where my focus is this week:\n\n🎬 *Marvin Minute* — the launch edition goes out this week\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🎨 *Design system* — making it official, one source for everything we build\n🧭 *Strategy* — getting the product-strategy dashboard live\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* strategy docs are attached as a zip — open index.html and poke around when you have time.\n\nMore as it ships this week. 🙌"
   },
   {
     number: 1,
@@ -83,7 +84,7 @@ const WEEKS = [
           "Sharpening who Marvin is for and how we take it to market at launch.",
         items: [
           "Updated the value proposition canvas and the business value canvas.",
-          "Built out the client-segmentation strategy — including a framework for how we pitch to each segment.",
+          "Built out the client-segmentation strategy — including the segment pitch playbook for how we go after each segment.",
           "Started a metrics & tracking strategy for launch, plus a first look at the usage dashboard."
         ]
       },

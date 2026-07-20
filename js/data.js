@@ -16,7 +16,7 @@ const WEEKS = [
     dateRange: "Jul 20 – 24, 2026",
     headline: "Turning launch strategy into shipped systems.",
     tldr:
-      "The Marvin Minute launch edition goes out this week. Coming out of Monday's messaging session with Alan and Jon, the rest of the week is about locking the launch narrative and getting the systems around it production-ready — the tour, the PDF export, the design system, and the product-strategy dashboard — plus kicking off the data and analytics plan.",
+      "The Marvin Minute launch edition goes out this week. Coming out of Monday's messaging session with Alan and Jon, the rest of the week is about locking the launch narrative and getting the systems around it production-ready — the tour, the PDF export, and the product-strategy dashboard — plus kicking off the data and analytics plan.",
     lanes: [
       {
         name: "Messaging & Launch Strategy",
@@ -54,16 +54,6 @@ const WEEKS = [
         ]
       },
       {
-        name: "Brand & Design System",
-        emoji: "🎨",
-        status: "In progress",
-        statusType: "active",
-        summary: "Making the design system official.",
-        items: [
-          "Formally establishing the design system so everything we build draws from one source."
-        ]
-      },
-      {
         name: "Product Vision & Strategy",
         emoji: "🧭",
         status: "In progress",
@@ -80,9 +70,11 @@ const WEEKS = [
       href: "marvin-minute/"
     },
     shipped: [],
-    onDeck: [],
+    onDeck: [
+      "Formally establish the design system — pushed from this week."
+    ],
     slack:
-      "👋 *Week 2* — here's where my focus is this week:\n\n🎬 *Marvin Minute* — the launch edition goes out this week → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n📊 *Data & analytics* — building out the plan; syncing with James Monday, then Josh & Alan once we're aligned\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🎨 *Design system* — making it official, one source for everything we build\n🧭 *Strategy* — getting the product-strategy dashboard live\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* strategy docs are attached as a zip — open index.html and poke around when you have time.\n\nMore as it ships this week. 🙌"
+      "👋 *Week 2* — here's where my focus is this week:\n\n🎬 *Marvin Minute* — the launch edition goes out this week → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n📊 *Data & analytics* — building out the plan; syncing with James Monday, then Josh & Alan once we're aligned\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🧭 *Strategy* — getting the product-strategy dashboard live\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs — unzip it and open index.html to explore whenever you have time.\n\nMore as it ships this week. 🙌"
   },
   {
     number: 1,

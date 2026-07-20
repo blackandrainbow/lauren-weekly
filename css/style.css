@@ -150,6 +150,36 @@ body {
   padding: 16px 18px; margin: 12px 0 0; white-space: pre-wrap;
 }
 
+/* Featured artifact preview */
+.preview-card {
+  border: 1px solid var(--line); border-radius: var(--radius-s);
+  overflow: hidden; background: var(--surface); margin: 26px 0 2px;
+  box-shadow: var(--shadow);
+}
+.preview-head { display: flex; align-items: center; gap: 10px; padding: 13px 17px; border-bottom: 1px solid var(--line-2); }
+.preview-title { font-size: 14.5px; font-weight: 700; color: var(--ink); flex: 1; letter-spacing: -0.01em; }
+.preview-note {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--st-shipping); background: rgba(18,161,80,.11);
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+}
+.preview-frame { position: relative; height: 250px; overflow: hidden; background: var(--bg-2); }
+.preview-frame iframe {
+  position: absolute; top: 0; left: 0; width: 250%; height: 250%;
+  border: 0; transform: scale(.4); transform-origin: 0 0; pointer-events: none;
+}
+/* fade the crop so it reads as an intentional peek */
+.preview-frame::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 60%, rgba(255,255,255,.94) 100%);
+}
+.preview-open {
+  display: block; text-align: center; padding: 11px;
+  font-size: 13.5px; font-weight: 650; color: #fff; background: var(--signal);
+  text-decoration: none; transition: background .12s;
+}
+.preview-open:hover { background: var(--signal-600); }
+
 /* Lanes grid */
 .lanes {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;

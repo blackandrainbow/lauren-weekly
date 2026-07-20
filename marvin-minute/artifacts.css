@@ -1,0 +1,1732 @@
+    :root {
+      --canvas:       #F5F5F5;
+      --paper:        #FFFFFF;
+      --ink:          #0F1A3C;
+      --ink-2:        #4C5880;
+      --ink-3:        #7C88A8;
+      --line:         #E5E8EF;
+      --line-2:       #D4DBE7;
+      --signal:       #1C7AFE;
+      --signal-soft:  #DBE6FF;
+      --signal-deep:  #0F4FB8;
+      --mainframe:    #111E45;
+      --indigo-500:       #1E1A4E;
+      --matrix:       #1FB879;
+      --caution:      #E5A33A;
+      --adverse:      #DC3E3E;
+      --gold:         #C99A3B;
+      --gold-deep:    #6B3F14;
+      --ghost:        #F5F5F5;
+      --cloud:        #8AB5F6;
+      --ease:         cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    /* Strip browser-default italic; em runs render thin + colored */
+    em, i { font-style: normal; font-weight: 300; }
+
+    body {
+      background:
+        radial-gradient(circle at 0% 0%, rgba(30,26,78,0.06), transparent 42%),
+        radial-gradient(circle at 100% 100%, rgba(28,122,254,0.05), transparent 44%),
+        var(--canvas);
+      color: var(--ink);
+      font-family: 'Onest', system-ui, sans-serif;
+      letter-spacing: -0.005em;
+      min-height: 100vh;
+    }
+    a { color: inherit; }
+    code, .mono { font-family: 'SUSE Mono', monospace; }
+
+    /* All-caps Onest kicker — same utility as the workbench */
+    .f-cap     { font-family: 'Onest', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; }
+    .f-cap-sm  { font-family: 'Onest', sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ── TOP NAV ── */
+    nav.topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88));
+      backdrop-filter: saturate(140%) blur(24px);
+      -webkit-backdrop-filter: saturate(140%) blur(24px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 32px;
+      height: 56px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+    .nav-logo {
+      width: 28px; height: 28px; border-radius: 9px;
+      background: linear-gradient(180deg, #1A2A55, var(--mainframe));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 13px;
+    }
+    .nav-title { font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-title small { font-weight: 400; color: var(--ink-2); margin-left: 6px; }
+    .nav-spacer { flex: 1; }
+    .nav-back {
+      font-size: 12.5px; color: var(--ink-2); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 8px;
+      transition: background 140ms var(--ease);
+    }
+    .nav-back:hover { background: var(--line); color: var(--ink); }
+    .nav-status {
+      font-family: 'Onest', sans-serif;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 999px;
+      background: var(--signal-soft); color: var(--signal);
+      letter-spacing: 0.10em; text-transform: uppercase;
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      max-width: 1180px; margin: 0 auto;
+      padding: 32px 32px 120px;
+    }
+    .page-hero {
+      margin-bottom: 40px;
+    }
+    .page-kicker {
+      color: var(--signal);
+      margin-bottom: 14px;
+    }
+    .page-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: -0.024em;
+      max-width: 900px;
+      margin-bottom: 16px;
+    }
+    .page-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .page-sub {
+      font-size: 17px; line-height: 1.55; color: var(--ink-2);
+      max-width: 720px;
+    }
+    .page-sub strong { color: var(--ink); font-weight: 600; }
+
+    /* Section toolbar — pinned section nav */
+    .section-toc {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      padding: 16px 18px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      margin-bottom: 56px;
+    }
+    .section-toc-link {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 140ms var(--ease);
+      display: flex; align-items: flex-start; gap: 10px;
+      min-width: 200px;
+    }
+    .section-toc-link:hover { background: var(--ghost); }
+    .section-toc-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: var(--signal-soft); color: var(--signal);
+      font-family: 'Onest', sans-serif; font-weight: 700;
+      font-size: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-toc-title { font-weight: 600; font-size: 13.5px; line-height: 1.3; }
+    .section-toc-sub { font-size: 12px; color: var(--ink-3); margin-top: 2px; line-height: 1.4; }
+
+    /* ── SECTION ── */
+    section.artifact { margin-bottom: 96px; scroll-margin-top: 72px; }
+    .artifact-head { margin-bottom: 28px; }
+    .artifact-head .f-cap { color: var(--signal); margin-bottom: 10px; display: inline-block; }
+    .artifact-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.05;
+      letter-spacing: -0.022em;
+      margin-bottom: 12px;
+    }
+    .artifact-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .artifact-sub {
+      font-size: 15px; line-height: 1.55; color: var(--ink-2);
+      max-width: 760px;
+    }
+    .artifact-sub strong { color: var(--ink); font-weight: 600; }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION 1 — COMPANY PDF EXPORT
+       Renders inside a fake "page" frame to evoke the printed output.
+       Page chrome (header / footer / page numbers / margins) reads as
+       a real PDF. Content matches the workbench export options exactly,
+       includes underwriter notes (a faked example), and shows the
+       defensibility footer + sources index.
+       ═════════════════════════════════════════════════════════════ */
+
+    .pdf-frame {
+      max-width: 880px; margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      box-shadow:
+        0 1px 0 rgba(17,30,69,0.04),
+        0 8px 24px -8px rgba(17,30,69,0.10),
+        0 32px 64px -32px rgba(17,30,69,0.18);
+      overflow: hidden;
+    }
+    .pdf-page {
+      padding: 56px 64px;
+      border-bottom: 1px dashed rgba(17,30,69,0.12);
+      position: relative;
+    }
+    .pdf-page:last-child { border-bottom: none; }
+    .pdf-page-marker {
+      position: absolute; top: 12px; right: 16px;
+      font-family: 'Onest', sans-serif;
+      font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink-3);
+    }
+    .pdf-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+    .pdf-header-brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pdf-header-logo {
+      width: 26px; height: 26px; border-radius: 7px;
+      background: linear-gradient(180deg, #1A2A55, var(--mainframe));
+      color: white; font-family: 'Onest', sans-serif; font-weight: 700;
+      font-size: 11.5px;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: -0.01em;
+    }
+    .pdf-header-name {
+      font-family: 'Onest', sans-serif;
+      font-size: 13.5px; font-weight: 600; letter-spacing: -0.008em;
+    }
+    .pdf-header-name small { color: var(--ink-2); font-weight: 400; margin-left: 6px; }
+    .pdf-header-meta {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10px; letter-spacing: 0.06em;
+      color: var(--ink-3);
+      text-align: right;
+    }
+    .pdf-header-meta b { color: var(--ink); font-weight: 600; }
+
+    .pdf-cover-kicker {
+      color: var(--signal); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pdf-cover-kicker::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(28,122,254,0.16);
+    }
+    .pdf-cover-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.04;
+      letter-spacing: -0.022em;
+      margin-bottom: 10px;
+    }
+    .pdf-cover-title em { color: var(--signal); font-weight: 300; }
+    .pdf-cover-sub {
+      font-size: 15px; line-height: 1.55; color: var(--ink-2);
+      margin-bottom: 32px; max-width: 580px;
+    }
+    .pdf-cover-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 32px;
+    }
+    .pdf-cover-stat-label {
+      font-family: 'Onest', sans-serif;
+      font-size: 9.5px; letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--ink-3); font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .pdf-cover-stat-value {
+      font-family: 'Onest', sans-serif;
+      font-size: 22px; line-height: 1.1; font-weight: 600;
+      letter-spacing: -0.012em;
+    }
+    .pdf-cover-stat-value.high { color: var(--adverse); }
+    .pdf-cover-stat-value.matrix { color: var(--matrix); }
+    .pdf-cover-stat-sub {
+      font-size: 11px; color: var(--ink-3); margin-top: 3px;
+      font-family: 'SUSE Mono', monospace; letter-spacing: 0.04em;
+    }
+
+    .pdf-section { margin-bottom: 28px; }
+    .pdf-section:last-child { margin-bottom: 0; }
+    .pdf-section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
+    }
+    .pdf-section-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 18px; letter-spacing: -0.012em;
+    }
+    .pdf-section-meta {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10px; letter-spacing: 0.08em; color: var(--ink-3);
+    }
+    .pdf-prose { font-size: 13.5px; line-height: 1.65; color: var(--ink); }
+    .pdf-prose p { margin-bottom: 10px; }
+    .pdf-prose strong { color: var(--ink); font-weight: 600; }
+    .pdf-prose-lede {
+      font-size: 14.5px; line-height: 1.65;
+      color: var(--ink-2); margin-bottom: 14px;
+    }
+
+    /* PDF firmographic table */
+    .pdf-firmo {
+      display: grid;
+      grid-template-columns: 130px 1fr 130px 1fr;
+      column-gap: 18px; row-gap: 8px;
+      padding: 14px 16px;
+      background: rgba(28,122,254,0.03);
+      border: 1px solid rgba(28,122,254,0.10);
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .pdf-firmo-label {
+      font-family: 'Onest', sans-serif;
+      font-size: 9.5px; letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--ink-3); font-weight: 700;
+      padding-top: 2px;
+    }
+    .pdf-firmo-val { font-size: 12.5px; color: var(--ink); line-height: 1.4; }
+    .pdf-firmo-val strong { font-weight: 600; }
+    .pdf-firmo-val .sub { display: block; font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+    /* PDF risk signal list */
+    .pdf-signals { display: flex; flex-direction: column; gap: 10px; }
+    .pdf-signal {
+      display: grid; grid-template-columns: 22px 1fr;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+    .pdf-signal.adverse { border-left: 3px solid var(--adverse); }
+    .pdf-signal.caution { border-left: 3px solid var(--caution); }
+    .pdf-signal-num {
+      font-family: 'Onest', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: var(--ink); padding-top: 1px;
+    }
+    .pdf-signal-body { font-size: 13px; line-height: 1.5; color: var(--ink); }
+    .pdf-signal-body strong { font-weight: 600; }
+    .pdf-signal-body .meta {
+      display: block; margin-top: 4px;
+      font-size: 11.5px; color: var(--ink-2);
+    }
+
+    /* Underwriter notes block — feels handwritten / annotated */
+    .pdf-notes {
+      padding: 16px 18px;
+      background: rgba(229,163,58,0.06);
+      border: 1px solid rgba(229,163,58,0.22);
+      border-left: 3px solid var(--caution);
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+    .pdf-notes-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .pdf-notes-author {
+      font-family: 'Onest', sans-serif;
+      font-size: 11px; font-weight: 600; color: var(--ink);
+    }
+    .pdf-notes-author small { color: var(--ink-3); font-weight: 400; margin-left: 4px; }
+    .pdf-notes-time {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-3);
+    }
+    .pdf-notes-body {
+      font-size: 12.5px; line-height: 1.6; color: var(--ink);
+    }
+    .pdf-notes-body em { color: var(--signal); font-weight: 300; }
+
+    /* PDF defensibility footer block */
+    .pdf-defense {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(28,122,254,0.18);
+      border-radius: 10px;
+      background: rgba(28,122,254,0.03);
+      margin-bottom: 18px;
+    }
+    .pdf-defense-col-head {
+      font-family: 'Onest', sans-serif;
+      font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 8px;
+    }
+    .pdf-defense-col-head.strong { color: var(--matrix); }
+    .pdf-defense-col-head.weak   { color: var(--caution); }
+    .pdf-defense-list {
+      list-style: none; font-size: 12px; line-height: 1.55; color: var(--ink-2);
+    }
+    .pdf-defense-list li {
+      padding-left: 14px; position: relative; margin-bottom: 5px;
+    }
+    .pdf-defense-list li::before {
+      content: '·'; position: absolute; left: 4px; top: -1px;
+      color: var(--ink-3); font-weight: 700;
+    }
+
+    /* PDF export options panel — preview chrome before the page itself */
+    .pdf-options {
+      max-width: 880px; margin: 0 auto 18px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 16px; align-items: center;
+      padding: 14px 18px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    .pdf-options-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .pdf-options-tag {
+      padding: 4px 9px; border-radius: 999px;
+      font-family: 'Onest', sans-serif; font-size: 11px; font-weight: 600;
+      background: var(--signal-soft); color: var(--signal);
+    }
+    .pdf-options-tag.off {
+      background: rgba(17,30,69,0.04); color: var(--ink-3);
+      text-decoration: line-through;
+    }
+    .pdf-options-cta {
+      padding: 8px 14px; border-radius: 8px;
+      background: var(--mainframe); color: white;
+      font-family: 'Onest', sans-serif; font-size: 12.5px; font-weight: 500;
+      border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* Sample switcher · sits above each PDF artifact so the same artifact
+       can demonstrate multiple companies. Toggle hides/shows sibling
+       articles tagged with data-sample. */
+    .sample-tabs {
+      max-width: 880px; margin: 0 auto 12px;
+      display: flex; gap: 6px;
+      padding: 4px;
+      background: rgba(17,30,69,0.04);
+      border-radius: 100px;
+      width: fit-content;
+    }
+    .sample-tab {
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      color: var(--ink-3);
+      font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 140ms ease, color 140ms ease;
+    }
+    .sample-tab:hover { color: var(--ink); }
+    .sample-tab.active {
+      background: white;
+      color: var(--ink);
+      box-shadow: 0 1px 2px rgba(17,30,69,0.08);
+    }
+    [data-sample][hidden] { display: none; }
+
+    /* PDF page footer */
+    .pdf-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+      font-family: 'SUSE Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-3);
+    }
+    .pdf-foot b { color: var(--ink); font-weight: 600; }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION 2 — RENEWAL MONITORING REPORT (cited)
+       Real-document feel: numbered citations inline, "Sources Cited"
+       bibliography at the end. Designed to survive an audit.
+       ═════════════════════════════════════════════════════════════ */
+
+    .mon-doc {
+      max-width: 880px; margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 56px 64px;
+      box-shadow:
+        0 1px 0 rgba(17,30,69,0.04),
+        0 8px 24px -8px rgba(17,30,69,0.10),
+        0 32px 64px -32px rgba(17,30,69,0.18);
+    }
+    .mon-cover {
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+    .mon-kicker { color: var(--signal); margin-bottom: 12px; }
+    .mon-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 36px;
+      line-height: 1.06; letter-spacing: -0.022em;
+      margin-bottom: 12px;
+    }
+    .mon-title em { color: var(--signal); font-weight: 300; }
+    .mon-sub {
+      font-size: 15px; line-height: 1.6; color: var(--ink-2);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+    .mon-sub strong { color: var(--ink); font-weight: 600; }
+    .mon-meta {
+      display: flex; gap: 28px; flex-wrap: wrap;
+    }
+    .mon-meta-cell {
+      min-width: 140px;
+    }
+    .mon-meta-cell .label {
+      font-family: 'Onest', sans-serif; font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--ink-3); margin-bottom: 4px;
+    }
+    .mon-meta-cell .value {
+      font-family: 'Onest', sans-serif;
+      font-size: 14px; font-weight: 600; color: var(--ink);
+    }
+    .mon-meta-cell .value.matrix { color: var(--matrix); }
+    .mon-meta-cell .value.adverse { color: var(--adverse); }
+
+    .mon-section { margin-bottom: 28px; }
+    .mon-section-head {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 16px;
+      letter-spacing: -0.008em;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+    .mon-section-head .num {
+      display: inline-block; min-width: 22px;
+      color: var(--signal); margin-right: 6px;
+    }
+    .mon-prose { font-size: 13.5px; line-height: 1.7; color: var(--ink); }
+    .mon-prose p { margin-bottom: 10px; }
+    .mon-prose strong { color: var(--ink); font-weight: 600; }
+
+    /* Inline citation marker — superscript, hyperlinked to bibliography. */
+    .cite {
+      vertical-align: super;
+      font-size: 10px;
+      font-family: 'Onest', sans-serif;
+      font-weight: 600;
+      color: var(--signal);
+      text-decoration: none;
+      padding: 0 2px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .cite:hover { text-decoration: underline; }
+    .cite::before { content: '['; opacity: 0.5; }
+    .cite::after  { content: ']'; opacity: 0.5; }
+
+    .mon-flag-row {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: rgba(220,62,62,0.04);
+      border: 1px solid rgba(220,62,62,0.16);
+      border-left: 3px solid var(--adverse);
+      margin-bottom: 10px;
+    }
+    .mon-flag-row.caution {
+      background: rgba(229,163,58,0.04);
+      border-color: rgba(229,163,58,0.20);
+      border-left-color: var(--caution);
+    }
+    .mon-flag-row.matrix {
+      background: rgba(31,184,121,0.04);
+      border-color: rgba(31,184,121,0.20);
+      border-left-color: var(--matrix);
+    }
+    .mon-flag-num {
+      font-family: 'Onest', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: var(--adverse);
+    }
+    .mon-flag-row.caution .mon-flag-num { color: var(--caution); }
+    .mon-flag-row.matrix  .mon-flag-num { color: var(--matrix); }
+    .mon-flag-body { font-size: 13px; line-height: 1.55; color: var(--ink); }
+    .mon-flag-body strong { font-weight: 600; }
+    .mon-flag-body .when {
+      display: block; margin-top: 4px;
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10px; letter-spacing: 0.06em; color: var(--ink-3);
+    }
+
+    /* Bibliography — Sources Cited */
+    .mon-bib {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 2px solid var(--ink);
+    }
+    .mon-bib-head {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 16px;
+      letter-spacing: -0.008em;
+      margin-bottom: 12px;
+    }
+    .mon-bib-intro {
+      font-size: 12.5px; line-height: 1.6; color: var(--ink-2);
+      margin-bottom: 16px;
+    }
+    .mon-bib-list {
+      list-style: none; counter-reset: bib;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .mon-bib-item {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 12px;
+      padding: 10px 12px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: 12px; line-height: 1.5;
+      color: var(--ink);
+    }
+    .mon-bib-num {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 12px;
+      color: var(--signal);
+      padding-top: 1px;
+    }
+    .mon-bib-body { font-size: 12px; }
+    .mon-bib-body strong { color: var(--ink); font-weight: 600; }
+    .mon-bib-body .meta {
+      display: block; margin-top: 2px;
+      font-family: 'SUSE Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-3);
+    }
+    .mon-bib-vendor {
+      padding: 2px 8px; border-radius: 999px;
+      font-family: 'Onest', sans-serif; font-size: 10px; font-weight: 600;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .mon-bib-vendor.marvin2     { background: rgba(17,30,69,0.10);   color: var(--mainframe); }
+    .mon-bib-vendor.sigma360    { background: rgba(30,26,78,0.14); color: var(--indigo-500); }
+    .mon-bib-vendor.linq360     { background: rgba(28,122,254,0.12);  color: var(--signal); }
+    .mon-bib-vendor.profound    { background: rgba(31,184,121,0.14);  color: var(--matrix); }
+    .mon-bib-vendor.outscraper  { background: rgba(45,178,178,0.14);  color: #1E7D7D; }
+    .mon-bib-vendor.flags       { background: rgba(220,62,62,0.10);   color: var(--adverse); }
+    .mon-bib-vendor.firecrawl   { background: rgba(255,124,76,0.14);  color: #C95217; }
+    .mon-bib-vendor.perplexity  { background: rgba(229,163,58,0.16);  color: var(--gold-deep); }
+    .mon-bib-vendor.cerebras    { background: rgba(30,26,78,0.10); color: var(--indigo-500); }
+    .mon-bib-vendor.web         { background: rgba(17,30,69,0.06);   color: var(--ink-2); border: 1px dashed rgba(17,30,69,0.22); padding: 1px 6px; }
+    .mon-bib-vendor { cursor: pointer; transition: filter 140ms ease; }
+    .mon-bib-vendor:hover { filter: brightness(0.95); }
+
+    /* Source-pill click-to-reveal popover · mirrors the workbench
+       pattern. Click any source pill on this page → masked URL +
+       copy + open. Single shared element appended to body. */
+    .source-reveal {
+      position: absolute; z-index: 9999;
+      min-width: 280px; max-width: 420px;
+      background: #111E45; color: white;
+      border-radius: 10px;
+      padding: 10px 12px;
+      box-shadow: 0 12px 28px rgba(17,30,69,0.32), 0 2px 6px rgba(17,30,69,0.16);
+      font-family: 'Onest', sans-serif;
+      font-size: 12px;
+    }
+    .source-reveal[hidden] { display: none; }
+    .source-reveal::before {
+      content: ''; position: absolute;
+      top: -5px; left: 16px;
+      width: 10px; height: 10px;
+      background: #111E45;
+      transform: rotate(45deg);
+    }
+    .source-reveal-head {
+      display: flex; align-items: center; gap: 8px;
+      padding-bottom: 8px; margin-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .source-reveal-vendor {
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 2px 6px; border-radius: 4px;
+      background: rgba(255,255,255,0.10); color: white;
+    }
+    .source-reveal-label {
+      font-size: 10px; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      flex: 1; text-align: right;
+    }
+    .source-reveal-url {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 11px; line-height: 1.45;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.01em; word-break: break-all;
+      padding: 6px 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px; margin-bottom: 8px;
+    }
+    .source-reveal-url .crumb-sep { color: rgba(255,255,255,0.35); margin: 0 4px; }
+    .source-reveal-url .crumb-host { color: #8AB5F6; }
+    .source-reveal-actions { display: flex; gap: 6px; }
+    .source-reveal-btn {
+      flex: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 7px 10px;
+      background: rgba(255,255,255,0.08); color: white;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 6px; cursor: pointer;
+      font-family: 'Onest', sans-serif;
+      font-size: 11.5px; font-weight: 500;
+    }
+    .source-reveal-btn:hover { background: rgba(255,255,255,0.16); }
+    .source-reveal-btn svg { width: 13px; height: 13px; }
+
+    .mon-foot {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10px; letter-spacing: 0.06em;
+      color: var(--ink-3);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .mon-foot b { color: var(--ink); font-weight: 600; }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION 3 — MARVIN'S WATCH (weekly per-user flagged-updates digest)
+       Email artifact, fired weekly to a workbench user from monitored
+       snapshots. Compact mast, scannable change list, link to the
+       full Monitoring Report for any signal that needs depth.
+       ═════════════════════════════════════════════════════════════ */
+
+    .watch-frame {
+      max-width: 720px; margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow:
+        0 1px 0 rgba(17,30,69,0.04),
+        0 8px 24px -8px rgba(17,30,69,0.10),
+        0 32px 64px -32px rgba(17,30,69,0.18);
+      overflow: hidden;
+    }
+    .watch-head {
+      padding: 28px 36px 22px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 56px;
+      gap: 18px; align-items: center;
+      background:
+        radial-gradient(circle at 95% 0%, rgba(28,122,254,0.08), transparent 55%),
+        white;
+    }
+    .watch-head-mascot {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--cloud);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+    .watch-head-mascot svg { width: 50px; height: 50px; display: block; overflow: visible; }
+    .watch-issue { color: var(--signal); margin-bottom: 6px; }
+    .watch-mast {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 28px; letter-spacing: -0.020em; line-height: 1.05;
+      margin-bottom: 4px;
+    }
+    .watch-mast em { color: var(--signal); font-weight: 300; }
+    .watch-meta {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-3);
+    }
+    .watch-meta b { color: var(--ink); font-weight: 600; }
+
+    .watch-body { padding: 28px 36px 32px; }
+
+    .watch-summary {
+      padding: 16px 18px;
+      border-radius: 10px;
+      background: rgba(28,122,254,0.04);
+      border: 1px solid rgba(28,122,254,0.16);
+      margin-bottom: 22px;
+      font-size: 14px; line-height: 1.6; color: var(--ink);
+    }
+    .watch-summary strong { font-weight: 600; }
+    .watch-summary em { color: var(--signal); font-weight: 300; }
+
+    .watch-section { margin-bottom: 24px; }
+    .watch-section-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+    .watch-section-head .label { color: var(--ink-3); }
+    .watch-section-head .count {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 11px;
+      padding: 3px 9px; border-radius: 999px;
+      background: rgba(220,62,62,0.10); color: var(--adverse);
+    }
+    .watch-section-head .count.matrix  { background: rgba(31,184,121,0.10); color: var(--matrix); }
+    .watch-section-head .count.caution { background: rgba(229,163,58,0.12); color: var(--caution); }
+
+    .watch-flag {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 12px; align-items: flex-start;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border-left: 3px solid var(--adverse);
+      background: rgba(220,62,62,0.04);
+      margin-bottom: 8px;
+    }
+    .watch-flag.caution {
+      border-left-color: var(--caution);
+      background: rgba(229,163,58,0.04);
+    }
+    .watch-flag.matrix {
+      border-left-color: var(--matrix);
+      background: rgba(31,184,121,0.04);
+    }
+    .watch-flag-body { font-size: 13px; line-height: 1.55; color: var(--ink); }
+    .watch-flag-body strong { font-weight: 600; }
+    .watch-flag-co {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--ink); margin-bottom: 3px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .watch-flag-co::after {
+      content: '·';
+      color: var(--ink-3);
+    }
+    .watch-flag-co .when {
+      color: var(--ink-3); font-weight: 500;
+      font-family: 'SUSE Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-left: 4px;
+    }
+    .watch-flag-link {
+      flex-shrink: 0;
+      padding: 5px 10px; border-radius: 8px;
+      font-family: 'Onest', sans-serif;
+      font-size: 11px; font-weight: 600;
+      color: var(--signal);
+      background: white;
+      border: 1px solid rgba(28,122,254,0.20);
+      text-decoration: none;
+      align-self: center;
+      white-space: nowrap;
+    }
+    .watch-flag-link:hover { background: rgba(28,122,254,0.06); }
+
+    .watch-cta {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 14px; align-items: center;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #1A2A55, var(--mainframe));
+      color: white;
+      margin-top: 22px;
+    }
+    .watch-cta-text {
+      font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.88);
+    }
+    .watch-cta-text strong { color: white; font-weight: 600; }
+    .watch-cta-btn {
+      padding: 9px 16px; border-radius: 8px;
+      font-family: 'Onest', sans-serif;
+      font-size: 12.5px; font-weight: 600;
+      color: var(--mainframe);
+      background: white;
+      border: none; cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .watch-foot {
+      padding: 18px 36px;
+      background: var(--ghost);
+      border-top: 1px solid var(--line);
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10px; letter-spacing: 0.06em;
+      color: var(--ink-3); text-align: center;
+      line-height: 1.6;
+    }
+    .watch-foot b { color: var(--ink-2); font-weight: 600; }
+    .watch-foot a { color: var(--signal); text-decoration: none; }
+
+    /* ─── Marvin's Watch · MONTHLY desk roll-up additions ───────────
+       KPI grid, full-roster table, and renewal cards live inside the
+       same .watch-frame chrome but need their own ink. */
+    .tm-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-bottom: 24px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .tm-kpi {
+      background: var(--paper);
+      padding: 16px 18px;
+    }
+    .tm-kpi-label {
+      color: var(--ink-3);
+      margin-bottom: 6px;
+    }
+    .tm-kpi-value {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink-1);
+      margin-bottom: 4px;
+    }
+    .tm-kpi-value.matrix { color: var(--matrix); }
+    .tm-kpi-sub {
+      font-size: 11px;
+      color: var(--ink-3);
+      line-height: 1.4;
+    }
+
+    .tm-table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .tm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .tm-table thead {
+      background: var(--ghost);
+    }
+    .tm-table th {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tm-table th.num { text-align: right; }
+    .tm-table td {
+      padding: 11px 12px;
+      border-bottom: 1px solid rgba(17,30,69,0.05);
+      color: var(--ink);
+      vertical-align: middle;
+    }
+    .tm-table td.num {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 12px;
+      text-align: right;
+      color: var(--ink-2);
+    }
+    .tm-table tbody tr:hover { background: rgba(28,122,254,0.025); }
+    .tm-table tbody tr:last-child td { border-bottom: none; }
+    .tm-table b { font-weight: 600; color: var(--ink-1); }
+
+    .tm-tier {
+      display: inline-block;
+      font-family: 'Onest', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 100px;
+      background: rgba(17,30,69,0.06);
+      color: var(--ink-2);
+    }
+    .tm-tier.matrix  { background: rgba(31,184,121,0.12); color: var(--matrix); }
+    .tm-tier.caution { background: rgba(229,163,58,0.14); color: #946011; }
+    .tm-tier.adverse { background: rgba(220,62,62,0.10); color: var(--adverse); }
+
+    .tm-renewal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .tm-renewal-card {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 14px 16px;
+      background: var(--paper);
+    }
+    .tm-renewal-when {
+      color: var(--signal);
+      margin-bottom: 8px;
+    }
+    .tm-renewal-co {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink-1);
+      margin-bottom: 6px;
+    }
+    .tm-renewal-note {
+      font-size: 12px;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION 4 — MARVIN MINUTE (newsletter restyle, LinkedIn pub)
+       Monthly newsletter; Marvin head sits in the header. Editorial
+       column with a few stories + a "this month from the field" stat.
+       ═════════════════════════════════════════════════════════════ */
+
+    .nl-frame {
+      max-width: 720px; margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow:
+        0 1px 0 rgba(17,30,69,0.04),
+        0 8px 24px -8px rgba(17,30,69,0.10),
+        0 32px 64px -32px rgba(17,30,69,0.18);
+      overflow: hidden;
+    }
+    .nl-head {
+      padding: 36px 44px 28px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(28,122,254,0.10), transparent 50%),
+        white;
+      border-bottom: 1px solid var(--line);
+      display: grid; grid-template-columns: 1fr 90px;
+      gap: 18px;
+      align-items: center;
+    }
+    .nl-head-mascot {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: var(--cloud);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+    .nl-head-mascot svg { width: 80px; height: 80px; display: block; overflow: visible; }
+    .nl-masthead {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700;
+      font-size: 38px; letter-spacing: -0.022em; line-height: 1.05;
+    }
+    .nl-masthead em { color: var(--signal); font-weight: 300; }
+    .nl-issue {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: 6px;
+    }
+    .nl-issue-meta {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.06em;
+      color: var(--ink-3);
+      margin-top: 6px;
+    }
+
+    .nl-body {
+      padding: 36px 44px 44px;
+    }
+    .nl-section { margin-bottom: 28px; }
+    .nl-section:last-child { margin-bottom: 0; }
+    .nl-section-kicker {
+      color: var(--signal); margin-bottom: 8px;
+    }
+    .nl-section-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 700; font-size: 22px;
+      line-height: 1.2; letter-spacing: -0.014em;
+      margin-bottom: 8px;
+    }
+    .nl-section-title em { color: var(--signal); font-weight: 300; }
+    .nl-prose { font-size: 14px; line-height: 1.7; color: var(--ink); }
+    .nl-prose p { margin-bottom: 10px; }
+    .nl-prose strong { font-weight: 600; }
+
+    /* Source pills · the three-bucket model (marvin · records · web) */
+    .src-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 2px 8px 2px 7px; border-radius: 999px;
+      font-family: 'Onest', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: -0.005em; white-space: nowrap; line-height: 1.4;
+      text-decoration: none; vertical-align: baseline;
+    }
+    .src-pill::before {
+      content: ''; width: 6px; height: 6px; border-radius: 999px;
+      background: currentColor; flex-shrink: 0;
+    }
+    .src-pill.marvin  { background: rgba(28,122,254,0.12); color: var(--signal); }
+    .src-pill.records { background: rgba(220,62,62,0.10);  color: var(--adverse); }
+    .src-pill.web {
+      background: rgba(15,26,60,0.04); border: 1px dashed rgba(15,26,60,0.22);
+      color: var(--ink-2); padding: 1px 7px;
+    }
+    .src-pill.web::before { display: none; }
+    .nl-pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+
+    /* Marvin's signature block — feels personal */
+    .nl-sig {
+      margin: 28px 0;
+      padding: 18px 20px;
+      background: rgba(28,122,254,0.04);
+      border-left: 2px solid var(--signal);
+      border-radius: 0 10px 10px 0;
+      display: grid; grid-template-columns: 36px 1fr;
+      gap: 12px;
+    }
+    .nl-sig-mark {
+      width: 36px; height: 36px;
+    }
+    .nl-sig-mark svg { width: 36px; height: 36px; display: block; }
+    .nl-sig-body {
+      font-size: 13.5px; line-height: 1.6; color: var(--ink);
+    }
+    .nl-sig-body em { color: var(--signal); font-weight: 300; }
+
+    .nl-stat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .nl-stat {
+      padding: 16px;
+      border-radius: 10px;
+      background: rgba(28,122,254,0.04);
+      border: 1px solid rgba(28,122,254,0.14);
+    }
+    .nl-stat-label {
+      font-family: 'Onest', sans-serif; font-weight: 700;
+      font-size: 9.5px; letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--ink-3); margin-bottom: 6px;
+    }
+    .nl-stat-value {
+      font-family: 'Onest', sans-serif;
+      font-size: 26px; font-weight: 700;
+      letter-spacing: -0.014em; color: var(--signal); line-height: 1;
+    }
+    .nl-stat-sub {
+      font-size: 11px; color: var(--ink-3); margin-top: 4px;
+      font-family: 'SUSE Mono', monospace; letter-spacing: 0.04em;
+    }
+
+    .nl-foot {
+      padding: 22px 44px;
+      background: var(--ghost);
+      border-top: 1px solid var(--line);
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10px; letter-spacing: 0.06em;
+      color: var(--ink-3); text-align: center;
+      line-height: 1.6;
+    }
+    .nl-foot b { color: var(--ink-2); font-weight: 600; }
+    .nl-foot a { color: var(--signal); text-decoration: none; }
+
+    .nl-divider {
+      height: 1px; background: var(--line);
+      margin: 24px 0;
+    }
+
+/* ── Standalone doc pages: print/save bar (added on extraction) ── */
+.doc-bar { max-width: 900px; margin: 0 auto; padding: 20px 24px; display:flex; align-items:center; gap:10px;
+  font-family:'SUSE Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); }
+.doc-bar a { color:var(--ink-2); text-decoration:none; }
+.doc-bar a:hover { color:var(--signal); }
+.doc-bar .sep { color:var(--ink-3); }
+.doc-bar .print { margin-left:auto; color:var(--signal); cursor:pointer; }
+section.artifact { margin-bottom: 64px; }
+@media print {
+  .doc-bar { display:none !important; }
+  body { background:#fff; }
+  section.artifact { margin:0; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION 5 — MARVIN MINUTE: LAUNCH ISSUE (lx-*)
+       Celebration one-off: launch ribbon, Core+ feature grid, the
+       "older than…" decade timeline, the Search·Price·Defend·Renew
+       breakdown, and the Marvin hero-photo slot. Reuses all nl-* +
+       Marvin symbols; only the launch-specific pieces live here.
+       ═════════════════════════════════════════════════════════════ */
+
+    /* Canonical Core+ badge (mirrors marketing.css / workbench style.css) */
+    :root {
+      --core-plus-1: #0A8C82; --core-plus-2: #07685F;
+      --forest: #0A8C82; --forest-deep: #07685F;
+      --matrix-deep: #117A4D; --ink-4: #9AA4BE; --warm-deep: #6B5F54;
+    }
+    .core-plus {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: 'Onest', sans-serif; font-weight: 900;
+      font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--core-plus-1);
+      background: rgba(10,140,130,0.12);
+      border: 1px solid rgba(10,140,130,0.26);
+      border-radius: 100px; padding: 2px 7px;
+      white-space: nowrap; vertical-align: middle; flex-shrink: 0;
+    }
+    /* Cap the Lucide star (mirrors marketing.css) — else it renders at 24px */
+    .core-plus svg, .core-plus i { width: 9px; height: 9px; stroke-width: 2.5; flex-shrink: 0; }
+
+    /* Launch ribbon — sits above the masthead */
+    .lx-ribbon {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: 999px;
+      background: linear-gradient(90deg, rgba(28,122,254,0.14), rgba(30,26,78,0.10));
+      border: 1px solid rgba(28,122,254,0.28);
+      font-family: 'SUSE Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--signal-deep); margin-bottom: 14px;
+    }
+    .lx-ribbon .dot {
+      width: 7px; height: 7px; border-radius: 999px;
+      background: var(--matrix); box-shadow: 0 0 0 3px rgba(31,184,121,0.20);
+    }
+
+    /* Intro lede under a section title */
+    .lx-lede { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 4px; }
+    .lx-lede strong { color: var(--ink); font-weight: 600; }
+
+    /* ── Workbench feature chips (ported verbatim from snapshot.css) ── */
+    .fc-chip-row {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin: 18px 0 4px;
+    }
+    .fc-chip-break { flex-basis: 100%; height: 0; margin: 0; border: none; padding: 0; }
+    .fc-chip-group-label {
+      flex-basis: 100%;
+      font-family: 'SUSE Mono', monospace;
+      font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-4); margin: 12px 0 -2px;
+    }
+    .fc-chip-group-label:first-child { margin-top: 0; }
+    .fc-chip-group-label .core-plus { margin-left: 7px; }
+    .fc-chip {
+      padding: 8px 15px; border-radius: 999px;
+      background: rgba(17,30,69,0.04);
+      border: 1px solid var(--line);
+      font-family: 'Onest', sans-serif;
+      font-size: 13px; font-weight: 500;
+      color: var(--ink-2); cursor: default;
+      display: inline-flex; align-items: center; gap: 7px;
+      transition: background .14s, border-color .14s, box-shadow .14s, color .14s;
+    }
+    .fc-chip:hover { background: rgba(17,30,69,0.07); color: var(--ink); }
+    .fc-chip-glyph { display: inline-flex; align-items: center; justify-content: center; color: var(--ink-3); }
+    .fc-chip-glyph svg { width: 14px; height: 14px; stroke-width: 1.85; }
+    /* Unlocked Core+ chip · forest accent */
+    .fc-chip.unlocked {
+      background: rgba(10,140,130,0.045);
+      border-color: rgba(10,140,130,0.32);
+      color: var(--forest-deep);
+    }
+    .fc-chip.unlocked .fc-chip-glyph { color: var(--forest); }
+    .fc-chip.unlocked:hover { background: rgba(10,140,130,0.11); border-color: var(--forest); }
+    /* Coming-soon chip */
+    .fc-chip.soon { background: rgba(17,30,69,0.035); border-color: transparent; color: var(--ink-3); }
+    .fc-chip.soon:hover { background: rgba(17,30,69,0.035); color: var(--ink-3); }
+    .fc-chip.soon .fc-chip-glyph { color: var(--ink-4); }
+
+    /* ── "Older than…" techy timeline (ported from snapshot.css) ── */
+    .timeline-list { margin-top: 16px; position: relative; }
+    .timeline-anchor {
+      display: grid; grid-template-columns: 80px 18px 1fr; gap: 14px;
+      padding: 13px 14px; margin-bottom: 6px; border-radius: 12px;
+      background: linear-gradient(90deg, var(--signal-soft), rgba(219,230,255,0.2));
+      border: 1px solid rgba(28,122,254,0.22);
+    }
+    .timeline-anchor .timeline-when { color: var(--signal-deep); font-weight: 600; }
+    .timeline-vs {
+      font-family: 'SUSE Mono', monospace; font-size: 9.5px;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
+      margin: 10px 0 2px;
+    }
+    .timeline-row {
+      display: grid; grid-template-columns: 80px 18px 1fr;
+      gap: 14px; padding: 12px 0;
+      border-bottom: 1px dashed rgba(17,30,69,0.06);
+    }
+    .timeline-row:last-child { border-bottom: none; }
+    .timeline-when {
+      font-family: 'SUSE Mono', monospace;
+      font-size: 13px; letter-spacing: 0.04em;
+      color: var(--ink-3); padding-top: 2px;
+    }
+    .timeline-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: white; border: 2px solid var(--ink-3);
+      margin-left: 3px; margin-top: 5px;
+    }
+    .timeline-row.matrix .timeline-dot { border-color: var(--matrix); }
+    .timeline-row.caution .timeline-dot { border-color: var(--caution); background: rgba(229,163,58,0.18); }
+    .timeline-row.adverse .timeline-dot { border-color: var(--adverse); }
+    .timeline-row.signal .timeline-dot { border-color: var(--signal); }
+    .timeline-body { font-size: 13px; line-height: 1.55; color: var(--ink); }
+    .timeline-body strong { font-weight: 600; }
+    .timeline-meta { display: block; margin-top: 4px; color: var(--ink-3); font-size: 11.5px; font-style: italic; }
+
+    /* ── Search · Price · Defend · Renew breakdown ──────────────── */
+    .lx-steps { display: grid; gap: 10px; margin: 18px 0 4px; }
+    .lx-step {
+      display: grid; grid-template-columns: 92px 1fr; align-items: center;
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+      background: var(--paper);
+    }
+    .lx-step-verb {
+      align-self: stretch; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2px;
+      padding: 14px 8px; color: #fff;
+      background: linear-gradient(160deg, var(--signal), var(--signal-deep));
+    }
+    .lx-step-verb .n {
+      font-family: 'SUSE Mono', monospace; font-size: 10px; opacity: 0.8;
+      letter-spacing: 0.10em;
+    }
+    .lx-step-verb .v {
+      font-family: 'Onest', sans-serif; font-weight: 700; font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+    .lx-step:nth-child(3) .lx-step-verb { background: linear-gradient(160deg, #2AA98B, #0A8C82); }
+    .lx-step-body { padding: 12px 16px; }
+    .lx-step-body h4 {
+      font-family: 'Onest', sans-serif; font-weight: 700; font-size: 14px;
+      color: var(--ink); margin-bottom: 3px; letter-spacing: -0.01em;
+    }
+    .lx-step-body h4 em { color: var(--signal); font-weight: 300; }
+    .lx-step-body p { font-size: 12.5px; line-height: 1.55; color: var(--ink-2); }
+
+    /* ── Marvin hero-photo slot ─────────────────────────────────── */
+    .lx-photo {
+      margin: 20px 0 4px; border-radius: 16px;
+      border: 2px dashed rgba(28,122,254,0.35);
+      background:
+        radial-gradient(circle at 50% 35%, rgba(28,122,254,0.07), transparent 60%),
+        var(--ghost);
+      min-height: 260px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; text-align: center; padding: 32px;
+    }
+    .lx-photo img { max-width: 100%; border-radius: 12px; display: block; }
+    .lx-photo-badge {
+      font-family: 'SUSE Mono', monospace; font-size: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--signal);
+      padding: 4px 10px; border: 1px solid rgba(28,122,254,0.30);
+      border-radius: 999px; background: rgba(28,122,254,0.06);
+    }
+    .lx-photo-title {
+      font-family: 'Onest', sans-serif; font-weight: 700; font-size: 16px; color: var(--ink);
+    }
+    .lx-photo-note { font-size: 12px; color: var(--ink-3); line-height: 1.5; max-width: 340px; }
+
+    @media (max-width: 560px) {
+      .lx-cp-grid { grid-template-columns: 1fr; }
+      .lx-step { grid-template-columns: 74px 1fr; }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION 6 — MARVIN MINUTE: LAUNCH PUBLICATION (mp-*)
+       One-page, print-ready warm publication. Masthead + glassy
+       feature pills over a product shot + a rail timeline + the
+       Search·Price·Defend·Renew loop. Fits US-Letter portrait.
+       ═════════════════════════════════════════════════════════════ */
+
+    .mp-page {
+      --mp-bg:     color-mix(in oklch, #fff 92%, #4C5880);   /* ink-50 — matches the workbench canvas */
+      --mp-bg-2:   #D3E1FF;
+      --mp-card:   #FFFFFF;   /* clean white cards */
+      --mp-ink:    #17223F;   /* navy near-black */
+      --mp-ink-2:  #4E587A;
+      --mp-ink-3:  #8B95B8;
+      --mp-line:   rgba(20,34,74,0.10);
+      --mp-warm:   #2C6BE6;   /* blue accent (was terracotta) */
+      --mp-warm-2: #5B93FF;   /* light blue */
+      --mp-warm-soft: #D3E1FF;
+      --mp-navy:   #101B3D;   /* deep navy for dark blocks */
+      --mp-navy-2: #1B2B57;
+
+      width: 816px; height: 1056px; margin: 0 auto;
+      background:
+        radial-gradient(120% 78% at 0% 0%, rgba(28,122,254,0.06), transparent 46%),
+        radial-gradient(120% 90% at 100% 100%, rgba(28,122,254,0.05), transparent 48%),
+        var(--mp-bg);
+      border: 1px solid rgba(20,34,74,0.09);
+      border-radius: 14px;
+      box-shadow: 0 1px 0 rgba(17,30,69,0.04), 0 24px 60px -22px rgba(20,34,74,0.28);
+      padding: 26px 34px 18px;
+      font-family: 'Onest', sans-serif; color: var(--mp-ink);
+      display: flex; flex-direction: column; gap: 7px;
+      overflow: hidden; isolation: isolate;
+    }
+    .mp-page *,
+    .mp-page em, .mp-page i { box-sizing: border-box; }
+
+    /* ── Editorial nameplate (newspaper-style, no box) ────────── */
+    .mp-nameplate { display: flex; flex-direction: column; }
+    /* top strip: thin rule with issue meta */
+    .mp-np-strip {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding-bottom: 9px; border-bottom: 1px solid var(--mp-line);
+      font-family: 'SUSE Mono', monospace; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--mp-ink-3);
+    }
+    .mp-np-strip .warm { color: var(--mp-warm); }
+    /* nameplate row: logo · big title · marvin, flanked */
+    .mp-np-row {
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      gap: 14px; padding: 12px 0 11px;
+    }
+    .mp-np-brand { display: flex; align-items: center; gap: 10px; }
+    .mp-logo {
+      width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(150deg, #2E8BFF, #1C7AFE);
+      color: #fff; font-weight: 800; font-size: 13px; letter-spacing: -0.02em;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px -4px rgba(28,122,254,0.6);
+    }
+    .mp-np-wordmark {
+      font-family: 'SUSE Mono', monospace; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--mp-ink-2); line-height: 1.3;
+    }
+    .mp-np-title {
+      font-family: 'Onest', sans-serif; font-weight: 800;
+      font-size: 40px; letter-spacing: -0.03em; color: var(--mp-navy);
+      line-height: 0.95; white-space: nowrap; text-align: center;
+    }
+    .mp-np-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .mp-np-right { display: flex; align-items: center; justify-content: flex-end; gap: 11px; }
+    .mp-np-issue {
+      text-align: right; font-family: 'Onest', sans-serif;
+      font-size: 13px; font-weight: 800; color: var(--mp-navy); line-height: 1.15;
+    }
+    .mp-np-issue span {
+      display: block; font-family: 'SUSE Mono', monospace; font-size: 9.5px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--mp-warm); margin-top: 2px;
+    }
+    .mp-mast-bot {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: radial-gradient(circle at 50% 35%, #d7e6ff, #a9c8fb);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: inset 0 0 0 1px rgba(28,122,254,0.22);
+    }
+    .mp-mast-bot svg { width: 33px; height: 33px; }
+    /* bottom double rule under the nameplate */
+    .mp-np-rule { border-top: 2px solid var(--mp-navy); position: relative; }
+    .mp-np-rule::after {
+      content: ''; position: absolute; left: 0; right: 0; top: 3px;
+      border-top: 1px solid var(--mp-navy);
+    }
+
+    /* Section eyebrow used across the page */
+    .mp-eyebrow {
+      font-family: 'SUSE Mono', monospace; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--mp-warm);
+      display: inline-flex; align-items: center; gap: 7px; margin-bottom: 7px;
+    }
+    .mp-eyebrow::before { content: ''; width: 16px; height: 2px; border-radius: 2px; background: var(--mp-warm); }
+
+    /* ── Hero: headline + product shot with glass pills ───────── */
+    .mp-hero-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+    .mp-hero-title {
+      font-family: 'Onest', sans-serif; font-weight: 800;
+      font-size: 27px; line-height: 1.02; letter-spacing: -0.022em; color: var(--mp-navy);
+    }
+    .mp-hero-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .mp-hero-dek { font-size: 12.5px; line-height: 1.5; color: var(--mp-ink-2); max-width: 300px; text-align: right; }
+    .mp-hero-dek strong { color: var(--mp-ink); font-weight: 600; }
+
+    /* ── Showcase: product image (left) + Core+ pack grid (right) ── */
+    .mp-showcase { display: grid; grid-template-columns: 1fr 360px; gap: 14px; align-items: stretch; }
+    .mp-stage {
+      position: relative; height: 100%; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--mp-line);
+      box-shadow: 0 18px 40px -20px rgba(20,34,74,0.4), inset 0 0 0 1px rgba(255,255,255,0.4);
+      background: var(--mp-card);
+      display: flex; flex-direction: column;
+    }
+    /* Faux browser chrome — anchors the product shot as a real window */
+    .mp-stage-bar {
+      display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+      height: 30px; padding: 0 13px;
+      background: linear-gradient(180deg, #FAFBFD, #EDF0F5);
+      border-bottom: 1px solid var(--mp-line);
+    }
+    .mp-stage-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .mp-stage-dot.r { background: #FF5F57; }
+    .mp-stage-dot.y { background: #FEBC2E; }
+    .mp-stage-dot.g { background: #28C840; }
+    .mp-stage-url {
+      margin-left: 9px; flex: 1; max-width: 300px; height: 18px;
+      display: flex; align-items: center; padding: 0 10px;
+      background: #fff; border: 1px solid var(--mp-line); border-radius: 6px;
+      font-family: 'SUSE Mono', monospace; font-size: 9px; letter-spacing: 0.01em;
+      color: var(--mp-ink-3); white-space: nowrap; overflow: hidden;
+    }
+    .mp-stage-body { position: relative; flex: 1; overflow: hidden; }
+    .mp-stage-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 0% 0%;
+    }
+    /* Core+ Data Packs panel */
+    /* Signal-colored bounding box behind the Core+ packs; white tiles pop on it. */
+    .mp-packs {
+      display: flex; flex-direction: column; height: 100%;
+      background: linear-gradient(158deg, var(--signal), var(--signal-deep));
+      border-radius: 16px; padding: 12px 12px 13px;
+      box-shadow: 0 16px 34px -20px rgba(15,79,184,0.55);
+    }
+    .mp-packs-head { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 2px 0 11px; }
+    .mp-packs-title { font-family: 'Onest', sans-serif; font-weight: 800; font-size: 16px; color: #fff; letter-spacing: -0.012em; }
+    .mp-packs .core-plus { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.42); color: #fff; }
+    .mp-packs .core-plus svg, .mp-packs .core-plus i { color: #fff; }
+
+    /* dp-tile component (ported from the snapshot workbench) */
+    .mp-dp-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 1fr); gap: 5px; flex: 1; }
+    .mp-dp-tile {
+      position: relative; display: flex; flex-direction: column; align-items: flex-start;
+      padding: 6px 9px 6px; background: #fff;
+      border: 1px solid var(--mp-line); border-radius: 10px;
+      font-family: 'Onest', sans-serif;
+    }
+    .mp-dp-icon {
+      width: 21px; height: 21px; border-radius: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(20,34,74,0.05); color: var(--mp-ink-3); margin-bottom: 4px;
+    }
+    .mp-dp-icon svg { width: 13px; height: 13px; stroke-width: 1.7; }
+    .mp-dp-name { font-weight: 600; font-size: 10.5px; line-height: 1.15; color: var(--mp-ink); }
+    .mp-dp-sub {
+      font-size: 8.5px; font-weight: 600; letter-spacing: 0.02em;
+      color: var(--mp-ink-3); margin-top: auto; padding-top: 3px;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .mp-dp-badge {
+      position: absolute; top: 8px; right: 8px;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+    }
+    .mp-dp-badge svg { width: 10px; height: 10px; stroke-width: 2.4; }
+    /* in pack (unlocked) */
+    .mp-dp-tile.unlocked { border-color: rgba(10,140,130,0.30); }
+    .mp-dp-tile.unlocked .mp-dp-icon { background: rgba(10,140,130,0.10); color: var(--forest); }
+    .mp-dp-tile.unlocked .mp-dp-sub { color: var(--forest); }
+    /* locked (unlock flow) */
+    .mp-dp-tile.locked .mp-dp-name { color: var(--mp-ink-2); }
+    .mp-dp-tile.locked .mp-dp-badge.lock { display: inline-flex; background: rgba(20,34,74,0.06); color: var(--mp-ink-3); }
+
+    /* ── Lower band: two columns ──────────────────────────────── */
+    .mp-cols { display: grid; grid-template-columns: 1fr 0.92fr; gap: 22px; align-items: start; }
+    .mp-panel {
+      background: var(--mp-card); border: 1px solid var(--mp-line);
+      border-radius: 16px; padding: 14px 16px;
+      box-shadow: 0 10px 26px -18px rgba(60,45,20,0.4);
+    }
+    .mp-panel-title {
+      font-family: 'Onest', sans-serif; font-weight: 800; font-size: 17px;
+      letter-spacing: -0.015em; color: var(--mp-navy); margin-bottom: 3px;
+    }
+    .mp-panel-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .mp-panel-sub { font-size: 11px; color: var(--mp-ink-2); line-height: 1.4; margin-bottom: 11px; }
+
+    /* Rail timeline — the "older than" list, properly formatted */
+    .mp-tl { position: relative; padding-left: 4px; }
+    .mp-tl-item {
+      position: relative; display: grid; grid-template-columns: 46px 1fr; gap: 12px;
+      padding: 0 0 10px;
+    }
+    .mp-tl-item:last-child { padding-bottom: 0; }
+    /* the rail */
+    .mp-tl-item::before {
+      content: ''; position: absolute; left: 53px; top: 17px; bottom: -2px;
+      width: 2px; background: linear-gradient(var(--mp-line), var(--mp-line));
+    }
+    .mp-tl-item:last-child::before { display: none; }
+    .mp-tl-yr {
+      font-family: 'SUSE Mono', monospace; font-weight: 600; font-size: 13px;
+      color: var(--mp-ink-2); text-align: right; padding-top: 1px;
+    }
+    .mp-tl-body { position: relative; padding-left: 16px; }
+    .mp-tl-dot {
+      position: absolute; left: -3.5px; top: 4px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--mp-card); border: 2px solid var(--mp-ink-3); z-index: 1;
+    }
+    .mp-tl-item.us .mp-tl-dot { border-color: var(--signal); background: var(--signal); box-shadow: 0 0 0 3px rgba(28,122,254,0.16); }
+    .mp-tl-item.us .mp-tl-yr { color: var(--signal); font-weight: 700; }
+    .mp-tl-app { font-size: 13px; font-weight: 700; color: var(--mp-ink); line-height: 1.25; }
+    .mp-tl-app em { color: var(--signal); font-weight: 700; font-style: normal; }
+    .mp-tl-quip { font-size: 11px; color: var(--mp-ink-2); line-height: 1.4; margin-top: 2px; }
+    .mp-tl-item.us .mp-tl-quip { color: var(--mp-ink-2); }
+
+    /* Search·Price·Defend·Renew loop */
+    .mp-loop { display: flex; flex-direction: column; gap: 6px; }
+    .mp-loop-step { display: grid; grid-template-columns: 30px 1fr; gap: 11px; align-items: start; }
+    .mp-loop-badge {
+      width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--signal-deep); font-weight: 800; font-size: 12.5px;
+      background: rgba(28,122,254,0.12);
+      border: 1.5px solid rgba(28,122,254,0.5);
+    }
+    .mp-loop-verb { font-family: 'Onest', sans-serif; font-weight: 700; font-size: 13.5px; color: var(--mp-ink); letter-spacing: -0.01em; }
+    .mp-loop-verb em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .mp-loop-desc { font-size: 11px; color: var(--mp-ink-2); line-height: 1.4; margin-top: 1px; }
+
+    /* ── Footer strip ─────────────────────────────────────────── */
+    .mp-foot {
+      margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; padding-top: 14px; border-top: 1px solid var(--mp-line);
+      font-family: 'SUSE Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+      color: var(--mp-ink-3);
+    }
+    .mp-foot b { color: var(--mp-ink-2); font-weight: 600; }
+    .mp-foot .mp-sign { color: var(--mp-warm); font-weight: 600; }
+
+    /* ── Playful starburst (Canva-style NEW/WOW energy) ───────── */
+    .mp-burst {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 62px; height: 62px; flex-shrink: 0; position: relative;
+      transform: rotate(-9deg);
+      font-family: 'Onest', sans-serif; font-weight: 800; font-size: 13px;
+      letter-spacing: 0.01em; color: var(--mp-navy); z-index: 1;
+    }
+    .mp-burst::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(150deg, #FFD24D, #FFB01F);
+      box-shadow: 0 6px 16px -6px rgba(255,176,31,0.7);
+      clip-path: polygon(50% 0%, 61% 15%, 79% 8%, 76% 27%, 95% 25%, 84% 40%, 100% 50%,
+        84% 60%, 95% 75%, 76% 73%, 79% 92%, 61% 85%, 50% 100%, 39% 85%, 21% 92%,
+        24% 73%, 5% 75%, 16% 60%, 0% 50%, 16% 40%, 5% 25%, 24% 27%, 21% 8%, 39% 15%);
+    }
+
+    /* ── Horizontal decade band (no card — sits on the page) ──── */
+    .mp-decade {
+      position: relative;
+      background: transparent; border: none; box-shadow: none;
+      padding: 4px 6px 2px; margin-top: 12px;
+    }
+    /* White backing panel — extends 60px into the sections above and below
+       and sits behind all content, so neighbours tuck over it (dimensional overlap). */
+    .mp-decade::before {
+      content: ''; position: absolute; z-index: -1;
+      left: -34px; right: -34px; top: -60px; bottom: -76px;
+      background: linear-gradient(180deg,
+        #fff 0%, #fff 55%,
+        color-mix(in oklch, #fff 92%, #4C5880) 100%);
+      border-radius: 0;
+    }
+    .mp-decade-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; margin-bottom: 12px; }
+    .mp-decade-title { font-family: 'Onest', sans-serif; font-weight: 800; font-size: 16px; color: var(--mp-navy); letter-spacing: -0.012em; }
+    .mp-decade-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .mp-decade-sub { font-size: 10.5px; color: var(--mp-ink-2); }
+    .mp-decade-sub em { color: var(--signal); font-style: normal; font-weight: 600; }
+    .mp-decade-rail { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+    .mp-decade-rail::before {
+      content: ''; position: absolute; left: 10%; right: 10%; top: 5px; height: 2px;
+      background: linear-gradient(90deg, var(--signal), var(--mp-line) 22%, var(--mp-line));
+    }
+    .mp-dnode { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 6px; }
+    .mp-dnode-dot {
+      width: 12px; height: 12px; border-radius: 50%; position: relative; z-index: 1;
+      background: var(--mp-card); border: 2px solid var(--mp-ink-3); margin-bottom: 8px;
+    }
+    .mp-dnode.us .mp-dnode-dot { border-color: var(--signal); background: var(--signal); box-shadow: 0 0 0 3px rgba(28,122,254,0.16); }
+    .mp-dnode-yr { font-family: 'SUSE Mono', monospace; font-weight: 600; font-size: 12px; color: var(--mp-ink-2); }
+    .mp-dnode.us .mp-dnode-yr { color: var(--signal); font-weight: 700; }
+    .mp-dnode-app { font-size: 11.5px; font-weight: 700; color: var(--mp-ink); line-height: 1.2; margin-top: 3px; }
+    .mp-dnode-quip { font-size: 9.5px; color: var(--mp-ink-3); line-height: 1.35; margin-top: 3px; }
+
+    /* ── Bottom Canva-style blocks: navy box + blue mascot box ── */
+    .mp-bottom { display: grid; grid-template-columns: 1.42fr 1fr; gap: 14px; }
+    /* Light card treatment — matches the Core+ tiles; the colored step
+       badges carry the energy instead of a heavy dark slab. */
+    .mp-navybox {
+      background: linear-gradient(180deg, #FFFFFF 0%, #EFF5FF 100%);
+      border: 1px solid var(--mp-line);
+      border-radius: 16px; padding: 11px 18px; position: relative; overflow: hidden;
+      box-shadow: 0 10px 26px -18px rgba(20,34,74,0.34);
+    }
+    .mp-navybox::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, var(--signal), #2AA98B);
+    }
+    .mp-navybox .mp-eyebrow { color: var(--signal); }
+    .mp-navybox .mp-eyebrow::before { background: var(--signal); }
+    .mp-navybox-title { font-family: 'Onest', sans-serif; font-weight: 800; font-size: 19px; color: var(--mp-navy); letter-spacing: -0.015em; margin-bottom: 3px; }
+    .mp-navybox-title em { color: var(--signal); font-weight: 300; font-style: normal; }
+    .mp-navybox-sub { font-size: 11px; color: var(--mp-ink-2); line-height: 1.4; margin-bottom: 13px; }
+    .mp-navybox .mp-loop-verb { color: var(--mp-ink); }
+    .mp-navybox .mp-loop-verb em { color: var(--signal); }
+    .mp-navybox .mp-loop-desc { color: var(--mp-ink-2); }
+
+    /* Full-bleed launch illustration with a caption scrim. */
+    .mp-marvinbox {
+      border-radius: 16px; padding: 0; position: relative; overflow: hidden;
+      display: block; background: #E7EEFF; border: 1px solid var(--mp-line);
+      box-shadow: 0 16px 34px -18px rgba(28,95,214,0.5);
+    }
+    .mp-marvinbox-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% 18%; display: block;
+    }
+    .mp-marvinbox-cap {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+      padding: 26px 16px 12px; text-align: center;
+      background: linear-gradient(180deg, rgba(9,18,44,0) 0%, rgba(9,18,44,0.86) 62%);
+    }
+    .mp-marvinbox-name { font-family: 'Onest', sans-serif; font-weight: 800; font-size: 21px; color: #fff; letter-spacing: -0.012em; }
+    .mp-marvinbox-tag { font-family: 'SUSE Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.86); margin-top: 4px; }
+
+    @media print {
+      @page { size: letter portrait; margin: 0; }
+      body { background: #fff; }
+      .mp-page { border: none; border-radius: 0; box-shadow: none; margin: 0; }
+    }

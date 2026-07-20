@@ -61,6 +61,22 @@ function onDeckList(onDeck) {
     </section>`;
 }
 
+/* Featured artifact preview — a live, scaled-down peek at a hosted page. */
+function previewCard(p) {
+  if (!p || !p.href) return "";
+  return `
+    <section class="preview-card">
+      <header class="preview-head">
+        <span class="preview-title">${esc(p.title)}</span>
+        ${p.note ? `<span class="preview-note">${esc(p.note)}</span>` : ""}
+      </header>
+      <div class="preview-frame">
+        <iframe src="${esc(p.href)}" title="${esc(p.title)} preview" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </div>
+      <a class="preview-open" href="${esc(p.href)}" target="_blank" rel="noopener">Open the full issue →</a>
+    </section>`;
+}
+
 /* Renders one whole week report as an HTML string. */
 function renderWeek(week) {
   const lanes = week.lanes.map(laneCard).join("");
@@ -82,6 +98,8 @@ function renderWeek(week) {
         <button class="btn-ghost js-toggle-slack" type="button">Preview text</button>
       </div>
       <pre class="slack-preview js-slack-preview" hidden>${esc(week.slack || "")}</pre>
+
+      ${previewCard(week.preview)}
 
       <div class="lanes">${lanes}</div>
 

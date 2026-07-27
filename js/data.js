@@ -2,32 +2,37 @@
    THE SOURCE OF TRUTH
    -------------------------------------------------------------------------
    Every Monday, add ONE new object to the TOP of this array (newest first).
-   - index.html always shows WEEKS[0] (the current week).
+   - index.html front page shows the two newest weeks (This week + Last week).
    - archive.html lists every week and can open any of them.
-   The previous week auto-archives the moment a newer one sits above it.
+   The previous weeks roll into the archive as newer ones stack on top.
 
    STATUS TYPES (drive the colored pill): "active" | "shipping" | "planning" | "done"
+   Optional per-week `preview: {title, note, href}` renders a live embedded peek.
    ========================================================================= */
 
 const WEEKS = [
   {
     number: 2,
-    weekOf: "2026-07-20",
-    dateRange: "Jul 20 – 24, 2026",
-    headline: "Turning launch strategy into shipped systems.",
+    weekOf: "2026-07-27",
+    dateRange: "Jul 27 – 31, 2026",
+    headline: "Getting everything launch-ready.",
     tldr:
-      "The Marvin Minute launch edition goes out this week. Coming out of Monday's messaging session with Alan and Jon, the rest of the week is about locking the launch narrative and getting the systems around it production-ready — the tour, the PDF export, and the product-strategy dashboard — plus kicking off the data and analytics plan.",
+      "Launch-prep week — QA'ing the workbench, updating the marketing-site tour to match, refreshing the Marvin Minute with the latest messaging, and shoring up docs, admin, and the analytics dashboard.",
+    preview: {
+      title: "The Marvin Minute · Launch Issue",
+      note: "Refreshing this week",
+      href: "marvin-minute/"
+    },
     lanes: [
       {
-        name: "Messaging & Launch Strategy",
-        emoji: "🎯",
+        name: "Launch Prep",
+        emoji: "🚀",
         status: "In progress",
         statusType: "active",
-        summary: "Locking how we talk about Marvin at launch.",
+        summary: "Getting the product and the site ready for launch.",
         items: [
-          "Marvin Minute — launch edition going out this week.",
-          "Turning Monday's messaging-strategy session with Alan and Jon into a clear, shared launch narrative.",
-          "Aligning the segment pitch playbook with the final messaging."
+          "QA'ing the workbench before launch.",
+          "Updating the marketing-site \"tour\" so it matches the latest product."
         ]
       },
       {
@@ -35,118 +40,101 @@ const WEEKS = [
         emoji: "📊",
         status: "In progress",
         statusType: "active",
-        summary: "Standing up how we measure the product and the launch.",
+        summary: "Making the launch measurable.",
         items: [
-          "Developing the data and analytics plan.",
-          "Meeting with James on Monday to align on it.",
-          "Bringing in Josh and Alan once James and I are aligned."
+          "Shoring up the analytics dashboard — North Star + the simplified launch view.",
+          "Syncing with James on the data plan; bringing in Josh and Alan once we're aligned."
         ]
       },
       {
-        name: "Snapshot & Workbench",
-        emoji: "🛠️",
-        status: "In progress",
-        statusType: "active",
-        summary: "Bringing the surrounding experience up to match last week's product ships.",
-        items: [
-          "Updating the product tour to reflect the new search, Core+ chips, Marvin's Analysis, and monitoring.",
-          "Updating the PDF export."
-        ]
-      },
-      {
-        name: "Product Vision & Strategy",
-        emoji: "🧭",
-        status: "In progress",
-        statusType: "active",
-        summary: "Getting the strategy work in front of the team.",
-        items: [
-          "Getting the product-strategy dashboard live."
-        ]
-      }
-    ],
-    preview: {
-      title: "The Marvin Minute · Launch Issue",
-      note: "Going out this week",
-      href: "marvin-minute/"
-    },
-    shipped: [],
-    onDeck: [
-      "Formally establish the design system — pushed from this week."
-    ],
-    slack:
-      "👋 *Week 2* — here's where my focus is this week:\n\n🎬 *Marvin Minute* — the launch edition goes out this week → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n🎯 *Messaging & launch* — turning Monday's session with Alan & Jon into our launch narrative\n📊 *Data & analytics* — building out the plan; syncing with James Monday, then Josh & Alan once we're aligned\n🛠️ *Product* — updating the tour + PDF export to match last week's snapshot/workbench upgrades\n🧭 *Strategy* — getting the product-strategy dashboard live\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs — unzip it and open index.html to explore whenever you have time.\n\nMore as it ships this week. 🙌"
-  },
-  {
-    number: 1,
-    weekOf: "2026-07-13",
-    dateRange: "Jul 13 – 17, 2026",
-    headline: "Launch prep in high gear — strategy, product, and story all moving at once.",
-    tldr:
-      "A heavy pre-launch week: refreshed the core strategy canvases and client segmentation, shipped a wave of snapshot & workbench upgrades, and got launch content and messaging rolling. Also stood up this dashboard so you can follow the background work from here on.",
-    lanes: [
-      {
-        name: "Product Vision & Strategy",
-        emoji: "🧭",
-        status: "In progress",
-        statusType: "active",
-        summary:
-          "Sharpening who Marvin is for and how we take it to market at launch.",
-        items: [
-          "Updated the value proposition canvas and the business value canvas.",
-          "Built out the client-segmentation strategy — including the segment pitch playbook for how we go after each segment.",
-          "Started a metrics & tracking strategy for launch, plus a first look at the usage dashboard."
-        ]
-      },
-      {
-        name: "Snapshot & Workbench",
-        emoji: "🛠️",
-        status: "Shipped",
-        statusType: "shipping",
-        summary:
-          "A wave of product improvements landed in the snapshot and workbench.",
-        items: [
-          "New search interface + premium Core+ chips.",
-          "New Marvin's Analysis view.",
-          "Monitoring interface built for two different scenarios."
-        ]
-      },
-      {
-        name: "Content & Launch",
+        name: "Marvin Minute & Messaging",
         emoji: "🎬",
         status: "In progress",
         statusType: "active",
-        summary: "Getting the launch story and content ready to go.",
+        summary: "Landing the launch story.",
         items: [
-          "Brainstormed and built a new Marvin Minute for launch — ready Monday.",
-          "Prepping for a messaging-strategy meeting Monday with Alan and Jon."
+          "Updating the Marvin Minute with the latest round of messaging.",
+          "New landing page review — meeting Tuesday."
         ]
       },
       {
-        name: "Brand & Design System",
-        emoji: "🎨",
+        name: "Docs & Admin",
+        emoji: "📄",
         status: "In progress",
         statusType: "active",
-        summary: "Tightening the system everything else is built on.",
+        summary: "Tightening the edges before launch.",
         items: [
-          "Updated the design skill.",
-          "Laying groundwork to formally establish the design system (landing next week)."
+          "Shoring up documentation and admin."
+        ]
+      }
+    ],
+    shipped: [],
+    onDeck: [],
+    slack:
+      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / messaging / product-strategy work that usually happens in the background.\n\n📅 *This week (Jul 27–31):*\n🚀 *Launch prep* — QA'ing the workbench + updating the marketing-site tour to match\n📊 *Data & analytics* — shoring up the launch dashboard (North Star); syncing w/ James, then Josh & Alan\n🎬 *Marvin Minute* — refreshing with the latest messaging → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n📄 *Docs & admin* — tightening the edges before launch\n\n🏆 *Last week* we landed the brand (\"Know your business\"), a new animated landing page, a 90-second guided demo, and the competitive analysis — it's all on the dashboard.\n\n👀 *Dashboard:* https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs.\n\nFresh update every Monday. 🙌"
+  },
+  {
+    number: 1,
+    weekOf: "2026-07-20",
+    dateRange: "Jul 20 – 24, 2026",
+    headline: "Landed the brand, the messaging, and the launch assets.",
+    tldr:
+      "A big week heading into launch: the brand pyramid landed on \"Know your business,\" a new animated landing page and a 90-second guided demo went live, and the data + competitive groundwork came together.",
+    lanes: [
+      {
+        name: "Brand & Messaging",
+        emoji: "🎨",
+        status: "Shipped",
+        statusType: "shipping",
+        summary: "The positioning finally clicked into place.",
+        items: [
+          "Landed the brand pyramid (v0.4) on \"Know your business\" as the tagline + promise.",
+          "Wrote the campaign lines — \"Ten years of taking the hits, so yours doesn't\" and \"we built this together.\"",
+          "Built the brand book, adopted the real R6 logo, and synced the r6-design skill so the team's tooling matches."
+        ]
+      },
+      {
+        name: "Landing Page & Guided Demo",
+        emoji: "🚀",
+        status: "Shipped",
+        statusType: "shipping",
+        summary: "A new front door for launch.",
+        items: [
+          "Shipped a new landing page with the new messaging and an animated hero.",
+          "Completed a full 90-second guided demo — walking from search all the way to snapshot."
+        ]
+      },
+      {
+        name: "Data & Analytics",
+        emoji: "📊",
+        status: "In progress",
+        statusType: "active",
+        summary: "Standing up how we measure the launch.",
+        items: [
+          "Data pipeline and analytics dashboard work underway.",
+          "Defined the North Star metric and a simplified launch dashboard."
+        ]
+      },
+      {
+        name: "Competitive & Proof",
+        emoji: "🔬",
+        status: "In progress",
+        statusType: "active",
+        summary: "Sharpening where we stand and the proof behind it.",
+        items: [
+          "Opened the competitive file — Kalepa, Planck, and Sixfold — and mapped the stack.",
+          "Published the book-audit case study and the M2 production analysis in the kit."
         ]
       }
     ],
     shipped: [
-      { title: "Snapshot & workbench improvements", note: "New search interface, premium Core+ chips, new Marvin's Analysis, dual-scenario monitoring." },
-      { title: "This weekly-update dashboard", note: "Live on GitHub Pages — a standing window into what I'm working on, updated every Monday." },
-      { title: "Updated the design skill", note: "Keeping our build system current." },
-      { title: "Invoices prepped", note: "Ready to hand off Monday." }
+      { title: "New landing page", note: "New messaging + animated hero." },
+      { title: "90-second guided demo", note: "Full walkthrough, search → snapshot." },
+      { title: "Brand pyramid v0.4", note: "\"Know your business\" tagline + promise, brand book, real logo." },
+      { title: "Competitive file + case studies", note: "Kalepa / Planck / Sixfold; book-audit + M2 analysis." }
     ],
-    onDeck: [
-      "Land the messaging & launch strategy out of Monday's meeting with Alan and Jon.",
-      "Update the product tour to match the new snapshot/workbench changes.",
-      "Update the PDF export.",
-      "Formally establish the design system.",
-      "Get the product-strategy dashboard live."
-    ],
+    onDeck: [],
     slack:
-      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the strategy / product / brand work that usually happens in the background.\n\nIt was a big pre-launch week:\n\n🧭 *Strategy* — refreshed the value-prop + business-value canvases, built out client segmentation, and started a metrics/tracking plan for launch\n🛠️ *Product* — shipped a bunch to the snapshot & workbench: new search, premium Core+ chips, new Marvin's Analysis, and dual-scenario monitoring\n🎬 *Launch* — new Marvin Minute ready for Monday + prepping our messaging strategy (w/ Alan & Jon)\n🚀 *New* — built this dashboard so you can follow along\n\n👀 *Peek:* the dashboard → https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip with the full strategy docs — open index.html and explore whenever you have time.\n\nFresh update every Monday. 🙌"
+      "👋 *Last week (Jul 20–24)* — a big one heading into launch:\n\n🎨 *Brand & messaging* — landed the pyramid on \"Know your business,\" wrote the campaign lines (\"Ten years of taking the hits, so yours doesn't\"), built the brand book\n🚀 *Landing page* — a new page with the new messaging + an animated hero\n🎬 *Guided demo* — a full 90-second walkthrough, search → snapshot\n📊 *Data* — pipeline + analytics work, the North Star metric, a simplified launch dashboard\n🔬 *Competitive* — Kalepa, Planck, Sixfold mapped; book-audit + M2 case studies published\n\nDashboard 👉 https://blackandrainbow.github.io/lauren-weekly/"
   }
 ];

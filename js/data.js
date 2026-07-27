@@ -12,7 +12,7 @@
 
 const WEEKS = [
   {
-    number: 2,
+    number: 4,
     weekOf: "2026-07-27",
     dateRange: "Jul 27 – 31, 2026",
     headline: "Getting everything launch-ready.",
@@ -74,7 +74,7 @@ const WEEKS = [
       "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / messaging / product-strategy work that usually happens in the background.\n\n📅 *This week (Jul 27–31):*\n🚀 *Launch prep* — QA'ing the workbench + updating the marketing-site tour to match\n📊 *Data & analytics* — shoring up the launch dashboard (North Star); syncing w/ James, then Josh & Alan\n🎬 *Marvin Minute* — refreshing with the latest messaging → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n📄 *Docs & admin* — tightening the edges before launch\n\n🏆 *Last week* we landed the brand (\"Know your business\"), a new animated landing page, a 90-second guided demo, and the competitive analysis — it's all on the dashboard.\n\n👀 *Dashboard:* https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs.\n\nFresh update every Monday. 🙌"
   },
   {
-    number: 1,
+    number: 3,
     weekOf: "2026-07-20",
     dateRange: "Jul 20 – 24, 2026",
     headline: "Landed the brand, the messaging, and the launch assets.",
@@ -89,7 +89,7 @@ const WEEKS = [
         summary: "The positioning finally clicked into place.",
         items: [
           "Landed the brand pyramid (v0.4) on \"Know your business\" as the tagline + promise.",
-          "Wrote the campaign lines — \"Ten years of taking the hits, so yours doesn't\" and \"we built this together.\"",
+          "Wrote the campaign lines — \"Ten years of taking the hits so your book doesn't\" and \"we built this together.\"",
           "Built the brand book, adopted the real R6 logo, and synced the r6-design skill so the team's tooling matches."
         ]
       },
@@ -135,6 +135,6 @@ const WEEKS = [
     ],
     onDeck: [],
     slack:
-      "👋 *Last week (Jul 20–24)* — a big one heading into launch:\n\n🎨 *Brand & messaging* — landed the pyramid on \"Know your business,\" wrote the campaign lines (\"Ten years of taking the hits, so yours doesn't\"), built the brand book\n🚀 *Landing page* — a new page with the new messaging + an animated hero\n🎬 *Guided demo* — a full 90-second walkthrough, search → snapshot\n📊 *Data* — pipeline + analytics work, the North Star metric, a simplified launch dashboard\n🔬 *Competitive* — Kalepa, Planck, Sixfold mapped; book-audit + M2 case studies published\n\nDashboard 👉 https://blackandrainbow.github.io/lauren-weekly/"
+      "👋 *Last week (Jul 20–24)* — a big one heading into launch:\n\n🎨 *Brand & messaging* — landed the pyramid on \"Know your business,\" wrote the campaign lines (\"Ten years of taking the hits so your book doesn't\"), built the brand book\n🚀 *Landing page* — a new page with the new messaging + an animated hero\n🎬 *Guided demo* — a full 90-second walkthrough, search → snapshot\n📊 *Data* — pipeline + analytics work, the North Star metric, a simplified launch dashboard\n🔬 *Competitive* — Kalepa, Planck, Sixfold mapped; book-audit + M2 case studies published\n\nDashboard 👉 https://blackandrainbow.github.io/lauren-weekly/"
   }
 ];

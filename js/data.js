@@ -68,10 +68,12 @@ const WEEKS = [
         ]
       }
     ],
-    shipped: [],
+    shipped: [
+      { title: "Brought the engagement site current", note: "The analytics dashboard, North Star, and 90-second guided demo are now live for the team — plus all of last week's brand & messaging work." }
+    ],
     onDeck: [],
     slack:
-      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / messaging / product-strategy work that usually happens in the background.\n\n📅 *This week (Jul 27–31):*\n🚀 *Launch prep* — QA'ing the workbench + updating the marketing-site tour to match\n📊 *Data & analytics* — shoring up the launch dashboard (North Star); syncing w/ James, then Josh & Alan\n🎬 *Marvin Minute* — refreshing with the latest messaging → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n📄 *Docs & admin* — tightening the edges before launch\n\n🏆 *Last week* we landed the brand (\"Know your business\"), a new animated landing page, a 90-second guided demo, and the competitive analysis — it's all on the dashboard.\n\n👀 *Dashboard:* https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs.\n\nFresh update every Monday. 🙌"
+      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / messaging / product-strategy work that usually happens in the background.\n\n📅 *This week (Jul 27–31):*\n🚀 *Launch prep* — QA'ing the workbench + updating the marketing-site tour to match\n📊 *Data & analytics* — shoring up the launch dashboard (North Star); syncing w/ James, then Josh & Alan\n🎬 *Marvin Minute* — refreshing with the latest messaging → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n📄 *Docs & admin* — tightening the edges before launch\n🗂️ *Engagement site* — brought current: the analytics dashboard + guided demo are now live for the team (ping me for the link)\n\n🏆 *Last week* we landed the brand (\"Know your business\"), a new animated landing page, a 90-second guided demo, and the competitive analysis — it's all on the dashboard.\n\n👀 *Dashboard:* https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs.\n\nFresh update every Monday. 🙌"
   },
   {
     number: 3,

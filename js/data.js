@@ -2,9 +2,8 @@
    THE SOURCE OF TRUTH
    -------------------------------------------------------------------------
    Every Monday, add ONE new object to the TOP of this array (newest first).
-   - index.html front page shows the two newest weeks (This week + Last week).
-   - archive.html lists every week and can open any of them.
-   The previous weeks roll into the archive as newer ones stack on top.
+   Numbers only ever climb — never reuse or renumber. Front page shows the two
+   newest weeks (This week + Last week); the rest live in the archive.
 
    STATUS TYPES (drive the colored pill): "active" | "shipping" | "planning" | "done"
    Optional per-week `preview: {title, note, href}` renders a live embedded peek.
@@ -12,68 +11,104 @@
 
 const WEEKS = [
   {
+    number: 5,
+    weekOf: "2026-08-03",
+    dateRange: "Aug 3 – 7, 2026",
+    headline: "Polishing the launch surfaces — site, exports, and the design skill.",
+    tldr:
+      "A tightening week: matching the marketing-site tour to what's live, refreshing the PDFs with current screenshots, auditing every marketing link, and folding the fonts + logo SVGs into the r6-design skill.",
+    lanes: [
+      {
+        name: "Marketing Site",
+        emoji: "🌐",
+        status: "In progress",
+        statusType: "active",
+        summary: "Getting the public site accurate and airtight.",
+        items: [
+          "Updating the tour on the marketing site to match what's live.",
+          "Auditing every marketing page link-off so they all work and point to the right place."
+        ]
+      },
+      {
+        name: "Exports & PDFs",
+        emoji: "📄",
+        status: "In progress",
+        statusType: "active",
+        summary: "Refreshing the deliverables.",
+        items: [
+          "Updating the PDFs with the newest screenshots."
+        ]
+      },
+      {
+        name: "Design Skill",
+        emoji: "🎨",
+        status: "In progress",
+        statusType: "active",
+        summary: "Rounding out the r6-design skill.",
+        items: [
+          "Adding the fonts and logo SVGs to the r6-design skill."
+        ]
+      }
+    ],
+    shipped: [],
+    onDeck: [],
+    slack:
+      "📅 *Week of Aug 3* — this week's focus:\n\n🌐 *Marketing site* — updating the tour to match what's live + auditing every page link-off\n📄 *PDFs* — refreshing the exports with the newest screenshots\n🎨 *Design skill* — adding the fonts + logo SVGs to the r6-design skill\n\n🏆 *Last week:* solidified the v0.6 brand messaging + pyramid, the animated site hero, and the 90-second demo — all live on the engagement site.\n\n👀 *Dashboard:* https://blackandrainbow.github.io/lauren-weekly/\n\nFresh update every week. 🙌"
+  },
+  {
     number: 4,
     weekOf: "2026-07-27",
     dateRange: "Jul 27 – 31, 2026",
-    headline: "Getting everything launch-ready.",
+    headline: "Solidified the messaging, the hero, and the demo.",
     tldr:
-      "Launch-prep week — QA'ing the workbench, updating the marketing-site tour to match, refreshing the Marvin Minute with the latest messaging, and shoring up docs, admin, and the analytics dashboard.",
+      "The launch story came together: the v0.6 brand messaging and pyramid solidified, the new animated site hero locked in, and the 90-second guided demo finalized — with the engagement site published so the team can see it all.",
     preview: {
       title: "The Marvin Minute · Launch Issue",
-      note: "Refreshing this week",
+      note: "Refreshed",
       href: "marvin-minute/"
     },
     lanes: [
       {
-        name: "Launch Prep",
-        emoji: "🚀",
-        status: "In progress",
-        statusType: "active",
-        summary: "Getting the product and the site ready for launch.",
+        name: "Messaging & Brand",
+        emoji: "🖋️",
+        status: "Shipped",
+        statusType: "shipping",
+        summary: "The brand voice reached v0.6.",
         items: [
-          "QA'ing the workbench before launch.",
-          "Updating the marketing-site \"tour\" so it matches the latest product."
+          "Solidified the v0.6 brand messaging and rewrote the brand pyramid + hook book.",
+          "Added the Tagline Lab and a campaign index to the engagement site.",
+          "Refreshed the Marvin Minute with the latest messaging."
         ]
       },
       {
-        name: "Data & Analytics",
-        emoji: "📊",
-        status: "In progress",
-        statusType: "active",
-        summary: "Making the launch measurable.",
+        name: "Site Hero & Animation",
+        emoji: "🎞️",
+        status: "Shipped",
+        statusType: "shipping",
+        summary: "The new front door is locked in.",
         items: [
-          "Shoring up the analytics dashboard — North Star + the simplified launch view.",
-          "Syncing with James on the data plan; bringing in Josh and Alan once we're aligned."
+          "Solidified the new animated site hero and landing.",
+          "Nav returns to the animated landing; dropped unvalidated stats."
         ]
       },
       {
-        name: "Marvin Minute & Messaging",
+        name: "Guided Demo",
         emoji: "🎬",
-        status: "In progress",
-        statusType: "active",
-        summary: "Landing the launch story.",
+        status: "Shipped",
+        statusType: "shipping",
+        summary: "The walkthrough is final.",
         items: [
-          "Updating the Marvin Minute with the latest round of messaging.",
-          "New landing page review — meeting Tuesday."
-        ]
-      },
-      {
-        name: "Docs & Admin",
-        emoji: "📄",
-        status: "In progress",
-        statusType: "active",
-        summary: "Tightening the edges before launch.",
-        items: [
-          "Shoring up documentation and admin."
+          "Solidified the 90-second guided demo — search → snapshot."
         ]
       }
     ],
     shipped: [
-      { title: "Brought the engagement site current", note: "The analytics dashboard, North Star, and 90-second guided demo are now live for the team — plus all of last week's brand & messaging work." }
+      { title: "Published the engagement site", note: "Analytics dashboard, North Star, guided demo, and Field Notes now live for the team." },
+      { title: "Refreshed the usage dashboard + replays", note: "From real PostHog data and Clients.xlsx." }
     ],
     onDeck: [],
     slack:
-      "👋 Starting something new — a weekly snapshot of what I'm working on, so you all have visibility into the brand / messaging / product-strategy work that usually happens in the background.\n\n📅 *This week (Jul 27–31):*\n🚀 *Launch prep* — QA'ing the workbench + updating the marketing-site tour to match\n📊 *Data & analytics* — shoring up the launch dashboard (North Star); syncing w/ James, then Josh & Alan\n🎬 *Marvin Minute* — refreshing with the latest messaging → https://blackandrainbow.github.io/lauren-weekly/marvin-minute/\n📄 *Docs & admin* — tightening the edges before launch\n🗂️ *Engagement site* — brought current: the analytics dashboard + guided demo are now live for the team (ping me for the link)\n\n🏆 *Last week* we landed the brand (\"Know your business\"), a new animated landing page, a 90-second guided demo, and the competitive analysis — it's all on the dashboard.\n\n👀 *Dashboard:* https://blackandrainbow.github.io/lauren-weekly/\n📎 *Deep dive:* I've attached a zip to this post with the full strategy docs.\n\nFresh update every Monday. 🙌"
+      "👋 *Last week (Jul 27–31):*\n\n🖋️ *Messaging* — solidified the v0.6 brand messaging; rewrote the pyramid + hook book and added a Tagline Lab\n🎞️ *Site* — locked in the new animated hero + landing\n🎬 *Demo* — finalized the 90-second guided walkthrough\n🗂️ *Live* — published the engagement site: analytics dashboard, North Star, guided demo, and Field Notes now live for the team\n\nDashboard 👉 https://blackandrainbow.github.io/lauren-weekly/"
   },
   {
     number: 3,
